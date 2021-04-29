@@ -1,0 +1,30 @@
+<!--pages/takeOrder/detail/detail.wxml-->
+<!-- <text>pages/takeOrder/detail/detail.wxml</text> -->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">订单详细信息</view></cu-custom>
+<image src='{{elements[idx].avatar}}' mode='widthFix' class='png' style='width:200rpx'></image>
+<view> 
+  {{elements[idx].title}}
+</view>
+<view>
+  请求者：{{elements[idx].name}},
+</view>
+<view>
+  代币奖励：{{elements[idx].reward}},
+</view>
+<view>
+  起始地址：{{elements[idx].from}},
+</view>
+<view>
+  目的地址：{{elements[idx].to}},
+</view>
+<!-- 紧急程度用最好用颜色/星级表示 -->
+<view>
+  紧急程度：{{elements[idx].emergency}},
+</view>
+<view>
+  物品信息：{{elements[idx].object}},
+</view>
+<view>
+  发布时间：{{elements[idx].time}},
+</view>
+<button></button>

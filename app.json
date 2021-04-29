@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/takeOrder/home/home",
+    "pages/takeOrder/detail/detail",
     "pages/basics/home/home",
     "pages/basics/layout/layout",
     "pages/basics/button/button",
