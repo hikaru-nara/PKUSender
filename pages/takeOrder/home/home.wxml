@@ -13,7 +13,7 @@
         <view class="text-grey">{{item.title}}</view>
         <view class="text-gray text-sm flex">
           <text class="text-cut">
-              <text class="cuIcon-infofill text-white  margin-right-xs"></text> {{item.from}} --> {{item.to}}
+              <text class="cuIcon-infofill text-white  margin-right-xs"></text> {{item.from}} --> {{item.to}} 
           </text>
         </view>
       </view>

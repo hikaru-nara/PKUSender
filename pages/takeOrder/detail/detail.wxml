@@ -17,14 +17,13 @@
 <view>
   目的地址：{{elements[idx].to}},
 </view>
-<!-- 紧急程度用最好用颜色/星级表示 -->
-<view>
-  紧急程度：{{elements[idx].emergency}},
-</view>
 <view>
   物品信息：{{elements[idx].object}},
 </view>
 <view>
   发布时间：{{elements[idx].time}},
+</view>
+<view>
+  订单描述：{{elements[idx].detail}}
 </view>
 <button></button>
