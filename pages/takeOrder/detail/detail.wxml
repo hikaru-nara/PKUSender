@@ -18,9 +18,6 @@
   目的地址：{{elements[idx].to}},
 </view>
 <view>
-  物品信息：{{elements[idx].object}},
-</view>
-<view>
   发布时间：{{elements[idx].time}},
 </view>
 <view>
