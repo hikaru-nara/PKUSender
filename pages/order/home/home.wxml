@@ -1,0 +1,42 @@
+<scroll-view scroll-y class="scrollPage">
+  <view class="order-bg">
+    <!-- <view class="solid-bottom text-xl margin-center">
+      <text class="text-black text-bold"> 感觉这里可以放个LOGO </text>
+    </view> -->
+    <image src="/images/LOGO.png" class="png"  mode="widthFix"></image>
+    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <form>
+    <view class="cu-form-group margin-top">
+      <view class="title">起始地址</view>
+      <input placeholder="订单起始地址"></input>
+      <text class="cuIcon-locationfill text-blue"></text>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">目的地址</view>
+      <input placeholder="订单目的地址"></input>
+      <text class="cuIcon-locationfill text-blue"></text>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">代币数量</view>
+      <picker bindchange="PickerChange" value="{{index}}" range="{{coinNumPicker}}">
+        <view class="picker">
+          {{index?coinNumPicker[index]:'悬赏代币数量'}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group align-start">
+      <view class="title">订单描述</view>
+      <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="订单简短描述"></textarea>
+    </view>
+    <view class="cu-form-group align-start">
+      <view class="title">私密信息</view>
+      <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="例如取件码等关键信息，接单之前无法查看"></textarea>
+    </view>
+  </form>
+  <view class="padding flex flex-direction">
+    <!-- 这里点击提交要检验各项信息是否准确，否则打回重填 -->
+    <!-- 提交成功后可以弹一个小窗口，提醒用户在订单中心里查询此单 -->
+    <button class="cu-btn bg-blue margin-tb-sm lg"> 提交订单 </button>
+  </view>
+</scroll-view>

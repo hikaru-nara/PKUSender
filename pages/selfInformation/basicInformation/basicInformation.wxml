@@ -1,0 +1,36 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">基本信息</view>
+</cu-custom>
+<scroll-view scroll-y class="scrollPage">
+  <form>
+    <view class="cu-form-group margin-top">
+      <view class="title">userID</view>
+      <!-- 这里需要一个用户的userID的信息 -->
+      <view class="userIDText" >1700012964</view>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">昵称</view>
+      <input placeholder="包含字母，数字，下划线"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">学号</view>
+      <input placeholder="真实学号"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">性别</view>
+      <picker bindchange="PickerChange" value="{{index}}" range="{{genderPicker}}">
+        <view class="picker">
+          {{index?genderPicker[index]:'选择'}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">头像</view>
+      <view class="cu-avatar round" style="background-image:url({{userInfo.avatarUrl}})"></view>
+    </view>
+  </form>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-blue margin-tb-sm lg"> 提交信息 </button>
+  </view>
+</scroll-view>

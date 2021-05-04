@@ -1,0 +1,19 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content"> {{title}} </view>
+</cu-custom>
+
+<scroll-view scroll-y class="scrollPage">
+  <form>
+    <view class="cu-form-group margin-top">
+      <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="{{index == -1? ' ':addressList[index].strMessage}}" bindinput="setAddressData"></textarea>
+    </view>
+  </form>
+
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="addAddressData" > 提交地址 </button>
+    <button wx:if="{{index!=-1}}" class="cu-btn bg-red margin-tb-sm lg" bindtap="deleteAddressData" > 删除地址 </button>
+  </view>
+</scroll-view>
+
+
