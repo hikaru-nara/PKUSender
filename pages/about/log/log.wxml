@@ -1,0 +1,122 @@
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">列表</view>
+  </cu-custom>
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class="action">
+      <text class="cuIcon-title text-orange "></text> 订单列表
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="menuModal">设置</button>
+    </view>
+  </view>
+  <view class="cu-modal {{modalName=='menuModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <scroll-view scroll-y style="height:300rpx">
+        <view class="cu-list menu text-left solid-top">
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">短边框</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuBorder"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">箭头</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuArrow"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">卡片</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuCard"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">短边框</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuBorder"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">箭头</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuArrow"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">卡片</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuCard"></switch>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+    <view class="cu-item {{menuArrow?'arrow':''}}">
+      <view class="content">
+        <text class="text-grey">订单</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
