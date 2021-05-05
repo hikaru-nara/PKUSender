@@ -2,8 +2,15 @@
   "usingComponents": {
     "basics": "/pages/basics/home/home",
     "component": "/pages/component/home/home",
+<<<<<<< HEAD
+    "order": "/pages/order/home/home",
+    "plugin": "/pages/order/home/home",
+    "selfInformation": "/pages/selfInformation/home/home",
+    "about": "/pages/selfInformation/home/home"
+=======
     "plugin": "/pages/plugin/home/home",
     "about": "/pages/about/home/home",
     "takeOrder": "/pages/takeOrder/home/home"
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
   }
 }
