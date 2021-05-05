@@ -968,12 +968,15 @@ button.icon.lg {
 	font-size: 2.5em;
 }
 
+<<<<<<< HEAD
 .cu-avatar.xxl {
 	width: 150rpx;
 	height: 150rpx;
 	font-size: 3em;
 }
 
+=======
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
 .cu-avatar .avatar-text {
 	font-size: 0.4em;
 }

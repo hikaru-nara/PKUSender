@@ -6,9 +6,12 @@ Page({
     this.setData({
       PageCur: e.currentTarget.dataset.cur
     })
+<<<<<<< HEAD
     // if(this.data.PageCur == 'selfInformation'){
 
     // }
+=======
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
   },
   onShareAppMessage() {
     return {

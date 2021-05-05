@@ -96,7 +96,11 @@
     <view class="action"></view>
   </view>
   <view class="bg-white padding">
+<<<<<<< HEAD
     <view class="grid col-{{index+1}} margin-bottom text-center" wx:for="{{5}}" wx:key>
+=======
+    <view class="grid col-{{index+1}} margin-bottom text-center" wx:for="{{5}}" wx:key="index">
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
       <view class="{{index%2==0?'bg-cyan':'bg-blue'}} padding" wx:for="{{(index+1)*2}}" wx:key>{{index+1}}</view>
     </view>
   </view>

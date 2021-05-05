@@ -1,11 +1,14 @@
 //app.js
 App({
   onLaunch: function() {
+<<<<<<< HEAD
     //隐藏系统tabbar
     // wx.hideTabBar();
     //获取设备信息
     this.getSystemInfo();
 
+=======
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
     if (wx.cloud) {
       wx.cloud.init({
         traceUser: true
@@ -23,6 +26,7 @@ App({
 		}
       }
     })
+<<<<<<< HEAD
     // 登录
     wx.login({
       success: res => {
@@ -109,6 +113,10 @@ App({
         }
       ]
     },
+=======
+  },
+  globalData: {
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
     ColorList: [{
         title: '嫣红',
         name: 'red',

@@ -1,18 +1,29 @@
 <basics wx:if="{{PageCur=='basics'}}"></basics>
 <component wx:if="{{PageCur=='component'}}"></component>
+<<<<<<< HEAD
 <order wx:if="{{PageCur=='order'}}"></order>
 <selfInformation wx:if="{{PageCur=='selfInformation'}}"></selfInformation>
+=======
+<plugin wx:if="{{PageCur=='plugin'}}"></plugin>
+<about wx:if="{{PageCur=='about'}}"></about>
+<takeOrder wx:if="{{PageCur=='takeOrder'}}"></takeOrder>
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
 <view class="cu-bar tabbar bg-white shadow foot">
   <view class="action" bindtap="NavChange" data-cur="basics">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/basics{{PageCur=='basics'?'_cur':''}}.png"></image>
     </view>
+<<<<<<< HEAD
     <view class="{{PageCur=='basics'?'text-green':'text-gray'}}">订单中心</view>
+=======
+    <view class="{{PageCur=='basics'?'text-green':'text-gray'}}">下单</view>
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
   </view>
   <view class="action" bindtap="NavChange" data-cur="component">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/component{{PageCur=='component'?'_cur':''}}.png"></image>
     </view>
+<<<<<<< HEAD
     <view class="{{PageCur=='component'?'text-green':'text-gray'}}">接单</view>
   </view>
   <view class="action" bindtap="NavChange" data-cur="order">
@@ -26,5 +37,26 @@
       <image src="/images/tabbar/about{{PageCur=='selfInformation'?'_cur':''}}.png"></image>
     </view>
     <view class="{{PageCur=='selfInformation'?'text-green':'text-gray'}}">个人中心</view>
+=======
+    <view class="{{PageCur=='component'?'text-green':'text-gray'}}">组件</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="takeOrder">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/component{{PageCur=='component'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='takeOrder'?'text-green':'text-gray'}}">接单</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="plugin">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/plugin{{PageCur=='plugin'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='plugin'?'text-green':'text-gray'}}">个人中心</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="about">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/about{{PageCur=='about'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='about'?'text-green':'text-gray'}}">订单中心</view>
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
   </view>
 </view>

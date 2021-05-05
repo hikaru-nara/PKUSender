@@ -23,7 +23,11 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
+<<<<<<< HEAD
     "useApiHostProcess": false,
+=======
+    "useApiHostProcess": true,
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -41,7 +45,11 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.6.4",
+<<<<<<< HEAD
   "appid": "wx21b3c2a8bfb9822b",
+=======
+  "appid": "wxbe6b6b15db059e18",
+>>>>>>> 5d083d752968aa1ed56d1874239f79231ac82ea2
   "projectname": "ColorUI2.0-demo",
   "debugOptions": {
     "hidedInDevtools": []
