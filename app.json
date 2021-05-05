@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/basics/home/home",
+    "pages/basics/layout/layout",
+    "pages/basics/button/button",
+    "pages/basics/button/design",
+    "pages/basics/tag/tag",
+    "pages/basics/avatar/avatar",
+    "pages/basics/progress/progress",
+    "pages/basics/shadow/shadow",
+    "pages/basics/background/background",
+    "pages/basics/text/text",
+    "pages/basics/icon/icon",
+    "pages/basics/loading/loading",
+    "pages/component/home/home",
+    "pages/component/list/list",
+    "pages/component/bar/bar",
+    "pages/component/timeline/timeline",
+    "pages/component/chat/chat",
+    "pages/component/form/form",
+    "pages/component/nav/nav",
+    "pages/component/card/card",
+    "pages/component/swiper/swiper",
+    "pages/component/modal/modal",
+    "pages/component/steps/steps",
+    "pages/about/log/log",
+    "pages/about/test/list",
+    "pages/about/test/filter",
+    "pages/about/home/home",
+    "pages/selfInformation/home/home",
+    "pages/selfInformation/basicInformation/basicInformation",
+    "pages/selfInformation/commonAddress/commonAddress",
+    "pages/selfInformation/coinRemain/coinRemain",
+    "pages/selfInformation/commonAddress/singleAddress/singleAddress",
+    "pages/order/home/home"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "Color UI",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#979795",
+    "selectedColor": "#1c1c1b",
+    "list": [
+      {
+        "pagePath": "pages/basics/home/home",
+        "iconPath": "images/tabbar/basics.png",
+        "selectedIconPath": "images/tabbar/basics_cur.png",
+        "text": "订单中心"
+      },
+      {
+        "pagePath": "pages/component/home/home",
+        "iconPath": "images/tabbar/component.png",
+        "selectedIconPath": "images/tabbar/component_cur.png",
+        "text": "接单"
+      },
+      {
+        "pagePath": "pages/order/home/home",
+        "iconPath": "images/tabbar/plugin.png",
+        "selectedIconPath": "images/tabbar/plugin_cur.png",
+        "text": "下单"
+      },
+      {
+        "pagePath": "pages/selfInformation/home/home",
+        "iconPath": "images/tabbar/about.png",
+        "selectedIconPath": "images/tabbar/about_cur.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

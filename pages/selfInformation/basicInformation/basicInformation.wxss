@@ -1,0 +1,7 @@
+/* pages/plugin/basicInformation/basicInformation.wxss */
+
+.userIDText{
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+  font-size: 35rpx;
+	color: var(--black);
+}
