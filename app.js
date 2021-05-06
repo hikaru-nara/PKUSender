@@ -84,7 +84,7 @@ App({
       "selectedColor": "#1c1c1b",
       "list": [
         {
-          "pagePath": "/pages/basics/home/home",
+          "pagePath": "/pages/orderCenter/home/home",
           "iconPath": "/images/tabbar/basics.png",
           "selectedIconPath": "/images/tabbar/basics_cur.png",
           "text": "订单中心"

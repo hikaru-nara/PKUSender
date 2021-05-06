@@ -1,0 +1,34 @@
+<scroll-view scroll-y class="scrollPage">
+  <view class="UCenter-bg">
+    <image src="/images/logo.png" class="png"  mode="widthFix"></image>
+    <view class="text-black">校内互助快递闪送平台</view>
+    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/orderCenter/chatform/chatform" hover-class="none">
+        <text class="cuIcon-messagefill text-green"></text>
+        <text class="text-grey">聊天</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/orderCenter/myorder/myorder" hover-class="none">
+        <text class="cuIcon-formfill text-purple"></text>
+        <text class="text-grey">我的下单</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/orderCenter/order/order" hover-class="none">
+        <text class="cuIcon-formfill text-yellow"></text>
+        <text class="text-grey">我的接单</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/orderCenter/hisorder/hisorder" hover-class="none">
+        <text class="cuIcon-newsfill text-blue"></text>
+        <text class="text-grey">历史订单</text>
+      </navigator>
+    </view>
+  </view>
+
+</scroll-view>

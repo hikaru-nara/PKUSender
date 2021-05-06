@@ -1,0 +1,141 @@
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">订单</view>
+</cu-custom>
+	<form>
+	<view class="cu-form-group margin-top">
+		<view class="title">求助者</view>
+		<text class="text-cut" bindtap="showModal" data-target="Human1">{{human1}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='Human1'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{human1}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">帮助者</view>
+		<text class="text-cut" bindtap="showModal" data-target="Human2">{{human2}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='Human2'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{human2}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">起始地址</view>
+		<text class="text-cut" bindtap="showModal" data-target="Start">{{start}}</text>
+		<text class="cuIcon-locationfill text-orange"></text>
+	</view>
+	<view class="cu-modal {{modalName=='Start'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{start}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">目的地址</view>
+		<text class="text-cut" bindtap="showModal" data-target="Target">{{target}}</text>
+		<text class="cuIcon-locationfill text-orange"></text>
+	</view>
+	<view class="cu-modal {{modalName=='Target'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{target}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">私密信息</view>
+		<text class="text-cut" bindtap="showModal" data-target="Self">{{self}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='Self'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{self}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">备注</view>
+		<text class="text-cut" bindtap="showModal" data-target="Message">{{message}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='Message'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{message}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">完成时间</view>
+		<text class="text-cut" bindtap="showModal" data-target="Time">{{time}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='Time'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{time}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">评价信息</view>
+		<text class="text-cut" bindtap="showModal" data-target="State">{{state}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='State'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{state}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">代币数额</view>
+		<text class="text-cut" bindtap="showModal" data-target="Money">{{money}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='Money'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{money}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+  <view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/orderCenter/chat/chat" hover-class="none">
+        <text class="title">聊天</text>
+      </navigator>
+		</view>
+	</view>
+</form>

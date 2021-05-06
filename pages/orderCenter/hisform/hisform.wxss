@@ -1,0 +1,9 @@
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+.text-cut{
+	flex: 1;
+	font-size: 30rpx;
+	color: #555;
+	padding-right: 40rpx;
+}

@@ -1,0 +1,116 @@
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">消息</view>
+  </cu-custom>
+  <view class="cu-modal {{modalName=='menuModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <scroll-view scroll-y style="height:300rpx">
+        <view class="cu-list menu text-left solid-top">
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">短边框</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuBorder"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">箭头</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuArrow"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">卡片</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuCard"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">短边框</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuBorder"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">箭头</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuArrow"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">卡片</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuCard"></switch>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="cu-list menu-avatar">
+    <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
+      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="content">
+      <view class="text-grey">翟天一</view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">有内鬼，终止交易！！</text>
+        </view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">22:20</view>
+        <view class="cu-tag round bg-red sm">5</view>
+      </view>
+    </navigator>
+    <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
+      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="content">
+      <view class="text-grey">陶坤鹏</view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">那啥你顺便帮我带个饭呗</text>
+        </view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">22:40</view>
+        <view class="cu-tag round bg-red sm">1</view>
+      </view>
+    </navigator>
+    <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
+      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="content">
+      <view class="text-grey">武艺</view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">你的货到了hxd</text>
+        </view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">22:32</view>
+        <view class="cu-tag round bg-red sm">2</view>
+      </view>
+    </navigator>
+    <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
+      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="content">
+      <view class="text-grey">李天</view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">取到快递了吗？</text>
+        </view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">22:35</view>
+        <view class="cu-tag round bg-red sm">1</view>
+      </view>
+    </navigator>
+  </view>  
+</scroll-view>

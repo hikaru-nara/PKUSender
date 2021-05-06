@@ -1,12 +1,10 @@
 // pages/takeOrder/home/home.js
-const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabbar: {},
     elements:[
       {
         "title": "取快递",
@@ -40,7 +38,7 @@ Page({
 
   navToDetail: function(arg){
     wx.navigateTo({
-      url: "/pages/takeOrder/detail/detail",
+      url: "/pages/orderCenter/hisform/hisform",
       success: function(res){
         res.eventChannel.emit('acceptDataFromOpenerPage', {index: arg.currentTarget.dataset.id})
       }
@@ -52,8 +50,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(1);
-    app.editTabbar();
+
   },
 
   /**

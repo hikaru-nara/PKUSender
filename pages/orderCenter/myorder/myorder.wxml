@@ -1,0 +1,84 @@
+<scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">我的下单</view>
+  </cu-custom>
+  <view class="cu-modal {{modalName=='menuModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <scroll-view scroll-y style="height:300rpx">
+        <view class="cu-list menu text-left solid-top">
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">短边框</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuBorder"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">箭头</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuArrow"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">卡片</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuCard"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">短边框</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuBorder"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">箭头</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuArrow"></switch>
+            </view>
+          </view>
+          <view class="cu-item">
+            <view class="content">
+              <text class="text-grey">卡片</text>
+            </view>
+            <view class="action">
+              <switch bindchange="menuCard"></switch>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="cu-list menu-avatar">
+    <view bindtap="navToDetail" data-id="{{index}}" class="cu-item" wx:for="{{elements}}" wx:key="index">
+      <!-- <view class="cu-avatar round lg" style="background-image:url(/images/LOGO.png);" wx:if="{{item.avatar}}"></view> -->
+      <!-- 可以把数据库的图片缓存到本地吗 -->
+      <view class="cu-avatar round lg" style="background-image:url(/images/LOGO.png);"></view>
+      <view class="content">
+        <!-- 订单类别/概述 -->
+        <view class="text-grey">{{item.title}}</view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">
+              <text class="cuIcon-infofill text-white  margin-right-xs"></text> <text style="color:var(--grey)">起点：</text>{{item.from}} <text style="color:var(--grey)">终点：</text>{{item.to}} 
+          </text>
+        </view>
+      </view>
+      <view class="action">
+        <!-- 发布时间 -->
+        <view class="text-grey text-xs">{{item.time}}</view>
+        <!-- 赏金 TODO: color -->
+        <view class="cu-tag round bg-orange sm">{{item.reward}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
