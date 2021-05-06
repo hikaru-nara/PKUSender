@@ -90,7 +90,7 @@ App({
           "text": "订单中心"
         },
         {
-          "pagePath": "/pages/component/home/home",
+          "pagePath": "/pages/takeOrder/home/home",
           "iconPath": "/images/tabbar/component.png",
           "selectedIconPath": "/images/tabbar/component_cur.png",
           "text": "接单"
