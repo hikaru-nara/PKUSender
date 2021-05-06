@@ -23,7 +23,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabbar();
-    console.log("order");
+    // console.log("order");
     // // 首先要获得用户的目前代币数量，这里先用一个数字代替
     var userCoinNum = 50, tmpIndex = 1, tmpList = [];
     for(;tmpIndex<=userCoinNum; ++tmpIndex){
