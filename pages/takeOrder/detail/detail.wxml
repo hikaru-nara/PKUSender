@@ -1,26 +1,129 @@
-<!--pages/takeOrder/detail/detail.wxml-->
-<!-- <text>pages/takeOrder/detail/detail.wxml</text> -->
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">订单详细信息</view></cu-custom>
-<image src='{{elements[idx].avatar}}' mode='widthFix' class='png' style='width:200rpx'></image>
-<view> 
-  {{elements[idx].title}}
-</view>
-<view>
-  请求者：{{elements[idx].name}},
-</view>
-<view>
-  代币奖励：{{elements[idx].reward}},
-</view>
-<view>
-  起始地址：{{elements[idx].from}},
-</view>
-<view>
-  目的地址：{{elements[idx].to}},
-</view>
-<view>
-  发布时间：{{elements[idx].time}},
-</view>
-<view>
-  订单描述：{{elements[idx].detail}}
-</view>
-<button></button>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">订单</view>
+</cu-custom>
+	<form>
+	<view class="cu-form-group margin-top">
+		<view class="title">求助者</view>
+		<text class="text-cut" bindtap="showModal" data-target="Human1">{{human1}}</text>
+  </view>
+  <view class="cu-modal {{modalName=='Human1'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{human1}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+  </view>
+  <view class="cu-form-group">
+		<view class="title">帮助者</view>
+		<text class="text-cut" bindtap="showModal" data-target="Human2">{{human2}} </text>
+	</view>
+	<view class="cu-modal {{modalName=='Human2'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{human2}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">起始地址</view>
+    <view class="text-new">
+    <text class="text-cut" bindtap="showModal" maxlength="20">{{start}}</text>
+  </view>
+    <text class="cuIcon-locationfill text-orange"></text>
+	</view>
+	<view class="cu-form-group">
+    <view class="title">目的地址</view>
+    <view class="text-new">
+      <text class="text-cut" maxlength="20">{{target}}</text>
+    </view>
+    <text class="cuIcon-locationfill text-orange"></text>
+	</view>
+	<view class="cu-form-group">
+    <view class="title">订单描述</view>
+    <view class="text-new">
+      <text class="text-cut" bindtap="showModal" maxlength="20" data-target="description">{{message}}</text>
+    </view>
+  </view>
+  <view class="cu-modal {{modalName=='description'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{message}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">订单地理位置</view>
+		<view class="text-new">
+			<text class="text-cut" bindtap="showModal" data-target="Place">{{place}}</text>
+		</view>
+    <text class="cuIcon-locationfill text-orange"></text>
+	</view>
+	<view class="cu-modal {{modalName=='Place'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{place}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">订单状态</view>
+		<view class="text-new">
+			<text class="text-cut" bindtap="showModal" data-target="State">{{state}}</text>
+		</view>
+	</view>
+	<view class="cu-modal {{modalName=='State'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{state}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">代币数额</view>
+		<view class='select_box'>
+ 			<view class='select'>
+				<text class='select_text'>{{selectData[index]}}</text>
+ 			</view>
+ 			
+		</view>
+	</view>
+	<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/orderCenter/chat/chat" hover-class="none">
+        <text class="title">聊天</text>
+      </navigator>
+		</view>
+	</view>
+</form>
+<button type='primary' bindtap='showModal_time' data-target='success' data-navigate='/pages/orderCenter/home/home'>
+  确认接单 
+</button>
+
+  <view class="cu-modal {{modalName=='success'?'show':''}}">
+    
+  	<view class="cu-dialog">
+      <icon type='success' size='100'></icon>
+    	<view style='text-align:center'>
+      	<text>接单成功，请前往订单中心查看订单信息</text>
+      	<!-- <view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view> -->
+    	</view>
+  	</view>
+	</view>
