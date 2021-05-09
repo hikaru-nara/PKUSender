@@ -103,13 +103,7 @@
  			
 		</view>
 	</view>
-	<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
-    <view class="cu-item arrow">
-      <navigator class="content" url="/pages/orderCenter/chat/chat" hover-class="none">
-        <text class="title">聊天</text>
-      </navigator>
-		</view>
-	</view>
+	
 </form>
 <button type='primary' bindtap='showModal_time' data-target='success' data-navigate='/pages/orderCenter/home/home'>
   确认接单 
