@@ -29,7 +29,8 @@ Page({
         "from": "34楼后快递点",
         "to": "39楼楼下",
         "object": "快递",
-        "avatar": "/images/LOGO.png"
+        "avatar": "/images/LOGO.png",
+        "state": "已下单"
       },
       {
         "title": "食堂外带",
@@ -42,7 +43,8 @@ Page({
         "from": "34楼后快递点",
         "to": "45乙楼楼下",
         "object": "鸡腿饭",
-        "avatar": "/images/LOGO.png"
+        "avatar": "/images/LOGO.png",
+        "state": "已下单"
       }
 
     ],
