@@ -31,12 +31,11 @@
     </view>
     <text class="cuIcon-locationfill text-orange"></text>
 	</view>
-	<view class="cu-form-group">
-    <view class="title">订单描述</view>
-    <view class="text-new">
-      <text class="text-cut" bindtap="showModal" maxlength="20" data-target="description">{{elements[idx].detail}}</text>
-    </view>
-  </view>
+	<view class="cu-form-group" >
+		<view class="title">订单描述</view>
+			<text class="text-cut" bindtap="showModal" maxlength="20" data-target="description">{{elements[idx].detail}}</text>
+	</view>
+	
   <view class="cu-modal {{modalName=='description'?'show':''}}">
   	<view class="cu-dialog">
     	<view class="cu-bar bg-white shadow">
@@ -46,6 +45,11 @@
       	</view>
     	</view>
   	</view>
+	</view>
+	
+	<view class="cu-form-group" >
+		<view class="title">下单时间</view>
+			<text class="text-cut" bindtap="showModal" maxlength="20" data-target="description">{{elements[idx].time}}</text>
 	</view>
 	<!-- <view class="cu-form-group">
 		<view class="title">订单状态</view>
