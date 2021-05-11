@@ -3,8 +3,8 @@
     <!-- <view class="solid-bottom text-xl margin-center">
       <text class="text-black text-bold"> 感觉这里可以放个LOGO </text>
     </view> -->
-    <image src="/images/LOGO.png" class="png"  mode="widthFix"></image>
-    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+    <image src="http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r" class="png"  mode="widthFix"></image>
+    <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <form>
     <view class="cu-form-group margin-top">
@@ -30,7 +30,7 @@
       <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="订单简短描述"></textarea>
     </view>
     <view class="cu-form-group align-start">
-      <view class="title">私密信息</view>
+      <view class="title">保护信息</view>
       <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="例如取件码等关键信息，接单之前无法查看"></textarea>
     </view>
   </form>
