@@ -1,0 +1,38 @@
+<scroll-view scroll-y class="scrollPage">
+  <!-- 这里需要从后端数据库读数据 -->
+  <view class="self-information-bg">
+    <view class="padding">
+      <!-- 这里的xxl需要自己写 -->
+      <!-- 之后信息要改，初始是从登录信息里面读取，之后就是从数据库中读取了，要写个判断 -->
+      <!-- 数据字典里要加上性别的信息 -->
+      <view class="cu-avatar xxl round margin-center" style="background-image:url({{userInfo.avatarUrl}})">
+        <view class="cu-tag badge {{userInfo.gender%3 == 2?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
+      </view>
+    </view>
+    <view class="solid-bottom text-xxl margin-center">
+      <text class="text-black">{{userInfo.nickName}}</text>
+    </view>
+    <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/selfInformation/basicInformation/basicInformation" hover-class="none">
+        <text class="cuIcon-newshotfill text-green"></text>
+        <text class="text-grey">基本信息</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/selfInformation/commonAddress/commonAddress" hover-class="none">
+        <text class="cuIcon-locationfill text-blue"></text>
+        <text class="text-grey">常用地址</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/selfInformation/coinRemain/coinRemain" hover-class="none">
+        <text class="cuIcon-coin text-yellow"></text>
+        <text class="text-grey">代币余额</text>
+      </navigator>
+    </view>
+  </view>
+
+</scroll-view>

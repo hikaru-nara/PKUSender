@@ -1,0 +1,59 @@
+.UCenter-bg {
+  background-image: url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAL*zCP8IBvR.S2Wsekbe7yese.ZDuPWVHwMpwU93zmoFvkQtxzaqPbdLc.GQgIJUqY!/r);
+  background-size: cover;
+  height: 550rpx;
+  display: flex;
+  justify-content: center;
+  padding-top: 40rpx;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.UCenter-bg text {
+  opacity: 0.8;
+}
+
+.UCenter-bg image {
+  width: 500rpx;
+  height: 500rpx;
+}
+
+.UCenter-bg .png {
+  width: 500rpx;
+  height: 500rpx;
+  bottom: 30px;
+  right: 10px;
+}
+
+.UCenter-bg .text-black{
+  position: absolute;
+  bottom: 90px;
+  font-weight: bold;
+}
+
+.UCenter-bg .gif-wave{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  mix-blend-mode: screen;  
+  height: 100rpx;   
+}
+
+map,.mapBox{
+  left: 0;
+  z-index: 99;
+  mix-blend-mode: screen;  
+  height: 100rpx;   
+}
+
+map,.mapBox{
+  width: 750rpx;
+  height: 300rpx;
+}

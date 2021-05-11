@@ -1,0 +1,22 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">代币余额</view>
+</cu-custom>
+
+<scroll-view scroll-y class="scrollPage">
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item">
+      <text class="text-black text-l">代币余额</text>
+      <text class="text-yellow text-xl">50</text>
+    </view>
+    <view class="cu-item">
+      <text class="text-black text-l">信用分</text>
+      <text class="text-green text-xl">100</text>
+    </view>
+    <view class="cu-item arrow">
+        <navigator class="content" url="/pages/selfInformation/coinRemain/coinRemain" hover-class="none">
+          <text class="text-black text-l">联系客服</text>
+        </navigator>
+      </view>
+  </view>
+</scroll-view>

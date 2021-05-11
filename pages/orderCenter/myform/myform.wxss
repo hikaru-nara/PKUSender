@@ -1,0 +1,64 @@
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+.cu-form-group .text-cut {
+	flex: 1;
+}
+.text-new{
+	flex: 1;
+	font-size: 30rpx;
+	color: #555;
+	padding-right: 40rpx;
+}
+.select_box{
+	background: #fff;
+	width: 80%;
+	margin: auto;
+	position: relative;
+ }
+ .select{
+	box-sizing: border-box;
+	width: 100%;
+	height: 70rpx;
+	border:1px solid #fff;
+	border-radius: 8rpx;
+	display: flex;
+	align-items: center;
+	padding: 0 20rpx;
+ }
+ .cuIcon-triangledownfill{
+	font-size: 55rpx;
+ }
+ .select_text{
+	font-size: 30rpx;
+	flex: 1;
+ }
+ .select_img{
+	width: 40rpx;
+	height: 40rpx;
+	display: block;
+	transition:transform 0.3s;
+ }
+ .select_img_rotate{
+	transform:rotate(180deg); 
+ }
+ .option_box{
+	position: absolute;
+	top: 70rpx;
+	width: 100%;
+	border:1px solid #fff;
+	box-sizing: border-box;
+	height: 0;
+	overflow-y: auto;
+	border-top: 0;
+	background: #fff;
+	transition: height 0.3s;
+	z-index: 100;
+ }
+ .option{
+	display: block;
+	line-height: 40rpx;
+	font-size: 30rpx;
+	border-bottom: 1px solid #efefef;
+	padding: 10rpx;
+ }

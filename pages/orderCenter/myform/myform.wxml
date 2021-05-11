@@ -1,0 +1,107 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">订单</view>
+</cu-custom>
+	<form>
+	<view class="cu-form-group margin-top">
+		<view class="title">求助者</view>
+		<text class="text-cut" bindtap="showModal" data-target="Human1">{{elements[idx].human1}}</text>
+	</view>
+	<view class="cu-modal {{modalName=='Human1'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].human1}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">帮助者</view>
+		<text class="text-cut" bindtap="showModal" data-target="Human2">{{elements[idx].human2}} </text>
+	</view>
+	<view class="cu-modal {{modalName=='Human2'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].human2}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">起始地址</view>
+		<input class="text-cut" value="{{elements[idx].start}}" bindtap="showModal" maxlength="20"></input>
+		<button class="cu-btn bg-yellow" bindtap='gotoPage'>修改地址</button>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">目的地址</view>
+		<input class="text-cut" value="{{elements[idx].target}}" bindtap="showModal" maxlength="20"></input>
+		<button class="cu-btn bg-yellow" bindtap="gotoPage">修改地址</button>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">保护信息</view>
+		<input class="text-cut" value="{{elements[idx].self}}" bindtap="showModal" maxlength="20"></input>
+  </view>
+	<view class="cu-form-group">
+		<view class="title">订单描述</view>
+		<input class="text-cut" value="{{elements[idx].message}}" bindtap="showModal" maxlength="20"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">订单当前位置</view>
+		<view class="text-new">
+			<text class="text-cut" bindtap="showModal" data-target="Place">{{elements[idx].place}}</text>
+		</view>
+		<text class="cuIcon-locationfill text-blue"></text>
+	</view>
+	<view class="cu-modal {{modalName=='Place'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].place}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">订单状态</view>
+		<view class="text-new">
+			<text class="text-cut" bindtap="showModal" data-target="State">{{elements[idx].state}}</text>
+		</view>
+	</view>
+	<view class="cu-modal {{modalName=='State'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].state}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">代币数额</view>
+		<view class='select_box'>
+ 			<view class='select' catchtap='selectTap'>
+				<text class='select_text'>{{selectData[Index]}}</text>
+				<text class="cuIcon-triangledownfill"></text>
+ 			</view>
+ 			<view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
+  			<text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this'	 data-index='{{index}}' catchtap='optionTap'>{{item}}</text>
+ 			</view>
+		</view>
+	</view>
+	<view class="cu-list menu {{menuBorder?'sm-border':''}} {{menuCard?'card-menu margin-top':''}}">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/orderCenter/chat/chat" hover-class="none">
+        <text class="title">聊天</text>
+      </navigator>
+		</view>
+	</view>
+	<view class="padding flex flex-direction">
+  	<button class="cu-btn bg-red margin-tb-sm lg">删除下单</button>
+	</view>
+</form>
