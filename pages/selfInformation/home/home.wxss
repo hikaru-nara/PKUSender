@@ -1,5 +1,5 @@
 .self-information-bg {
-  background-image: url(https://github.com/hikaru-nara/picture-repo/blob/main/images/background.jpg?raw=true);
+  background-image: url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAL*zCP8IBvR.S2Wsekbe7yese.ZDuPWVHwMpwU93zmoFvkQtxzaqPbdLc.GQgIJUqY!/r);
   background-size: cover;
   height: 550rpx;
   display: flex;

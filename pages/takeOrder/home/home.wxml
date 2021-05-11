@@ -7,7 +7,7 @@
     <view bindtap="navToDetail" data-id="{{index}}" class="cu-item" wx:for="{{elements}}" wx:key="index">
       <!-- <view class="cu-avatar round lg" style="background-image:url(/images/LOGO.png);" wx:if="{{item.avatar}}"></view> -->
       <!-- 可以把数据库的图片缓存到本地吗 -->
-      <view class="cu-avatar round lg" style="background-image:url(/images/LOGO.png);"></view>
+      <view class="cu-avatar round lg" style="background-image:url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r);"></view>
       <view class="content">
         <!-- 订单类别/概述 -->
         <view class="text-grey">{{item.title}}</view>

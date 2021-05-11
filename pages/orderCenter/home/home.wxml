@@ -1,8 +1,8 @@
 <scroll-view scroll-y class="scrollPage">
   <view class="UCenter-bg">
-    <image src="/images/logo.png" class="png"  mode="widthFix"></image>
+    <image src="http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r" class="png"  mode="widthFix"></image>
     <view class="text-black">校内互助快递闪送平台</view>
-    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+    <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">

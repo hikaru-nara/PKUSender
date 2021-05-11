@@ -12,7 +12,7 @@
     <view class="solid-bottom text-xxl margin-center">
       <text class="text-black">{{userInfo.nickName}}</text>
     </view>
-    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+    <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
