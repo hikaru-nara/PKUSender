@@ -1,15 +1,15 @@
 {
   "pages": [
     "pages/selfInformation/home/home",
-    "pages/orderCenter/home/home",
-    "pages/orderCenter/myform/address/address",
     "pages/selfInformation/basicInformation/basicInformation",
+    "pages/orderCenter/myform/address/address",
     "pages/selfInformation/commonAddress/commonAddress",
     "pages/selfInformation/coinRemain/coinRemain",
     "pages/selfInformation/commonAddress/singleAddress/singleAddress",
     "pages/order/home/home",
     "pages/takeOrder/home/home",
     "pages/takeOrder/detail/detail",
+    "pages/orderCenter/home/home",
     "pages/orderCenter/chat/chat",
     "pages/orderCenter/chatform/chatform",
     "pages/orderCenter/form/form",

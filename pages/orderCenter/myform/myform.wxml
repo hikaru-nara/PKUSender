@@ -33,13 +33,33 @@
 	</view>
 	<view class="cu-form-group">
 		<view class="title">起始地址</view>
-		<input class="text-cut" value="{{elements[idx].start}}" bindtap="showModal" maxlength="20"></input>
+		<text class="text-cut" bindtap="showModal" data-target="startAddress">{{elements[idx].start}}</text>
 		<button class="cu-btn bg-yellow" bindtap='gotoPage'>修改地址</button>
+	</view>
+	<view class="cu-modal {{modalName=='startAddress'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].start}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">目的地址</view>
-		<input class="text-cut" value="{{elements[idx].target}}" bindtap="showModal" maxlength="20"></input>
+		<text class="text-cut" bindtap="showModal" data-target="toAddress">{{elements[idx].target}}</text>
 		<button class="cu-btn bg-yellow" bindtap="gotoPage">修改地址</button>
+	</view>
+	<view class="cu-modal {{modalName=='toAddress'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].target}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">保护信息</view>
@@ -69,18 +89,8 @@
 	<view class="cu-form-group">
 		<view class="title">订单状态</view>
 		<view class="text-new">
-			<text class="text-cut" bindtap="showModal" data-target="State">{{elements[idx].state}}</text>
+			<text class="text-cut">{{elements[idx].state}}</text>
 		</view>
-	</view>
-	<view class="cu-modal {{modalName=='State'?'show':''}}">
-  	<view class="cu-dialog">
-    	<view class="cu-bar bg-white shadow">
-      	<text>{{elements[idx].state}}</text>
-      	<view class="action" bindtap="hideModal">
-        	<text class="cuIcon-close text-red"></text>
-      	</view>
-    	</view>
-  	</view>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">代币数额</view>

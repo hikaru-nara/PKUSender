@@ -1,4 +1,5 @@
 // pages/plugin/basicInformation/basicInformation.js
+const app = getApp();
 Page({
 
   /**
@@ -6,7 +7,8 @@ Page({
    */
   data: {
     index: null,
-    genderPicker: ['保密', '男', '女']
+    genderPicker: ['保密', '男', '女'],
+    userInfo : null,
   },
   
   PickerChange(e) {
@@ -19,7 +21,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData(
+      {
+        userInfo: app.globalData.userInfo,
+      }
+    );
+    // console.log(app.globalData.userInfo);
   },
 
   /**

@@ -41,7 +41,7 @@
     	<view class="cu-bar bg-white shadow">
       	<text>{{elements[idx].start}}</text>
       	<view class="action" bindtap="hideModal">
-        	<text class="cuIcon-close text-blue"></text>
+        	<text class="cuIcon-close text-red"></text>
       	</view>
     	</view>
   	</view>
