@@ -1,16 +1,16 @@
-<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
 	<view slot="backText">返回</view>
 	<view slot="content">订单</view>
 </cu-custom>
 	<form>
 	<view class="cu-form-group margin-top">
 		<view class="title">求助者</view>
-		<text class="text-cut" bindtap="showModal" data-target="Human1">{{human1}}</text>
+		<text class="text-cut" bindtap="showModal" data-target="Human1">{{elements[idx].human1}}</text>
 	</view>
 	<view class="cu-modal {{modalName=='Human1'?'show':''}}">
   	<view class="cu-dialog">
     	<view class="cu-bar bg-white shadow">
-      	<text>{{human1}}</text>
+      	<text>{{elements[idx].human1}}</text>
       	<view class="action" bindtap="hideModal">
         	<text class="cuIcon-close text-red"></text>
       	</view>
@@ -19,12 +19,12 @@
 	</view>
 	<view class="cu-form-group">
 		<view class="title">帮助者</view>
-		<text class="text-cut" bindtap="showModal" data-target="Human2">{{human2}} </text>
+		<text class="text-cut" bindtap="showModal" data-target="Human2">{{elements[idx].human2}} </text>
 	</view>
 	<view class="cu-modal {{modalName=='Human2'?'show':''}}">
   	<view class="cu-dialog">
     	<view class="cu-bar bg-white shadow">
-      	<text>{{human2}}</text>
+      	<text>{{elements[idx].human2}}</text>
       	<view class="action" bindtap="hideModal">
         	<text class="cuIcon-close text-red"></text>
       	</view>
@@ -33,33 +33,53 @@
 	</view>
 	<view class="cu-form-group">
 		<view class="title">起始地址</view>
-		<input class="text-cut" value="{{start}}" bindtap="showModal" maxlength="20">{{start}}</input>
-    <text class="cuIcon-locationfill text-orange"></text>
+		<text class="text-cut" bindtap="showModal" data-target="startAddress">{{elements[idx].start}}</text>
+		<button class="cu-btn bg-yellow" bindtap='gotoPage'>修改地址</button>
+	</view>
+	<view class="cu-modal {{modalName=='startAddress'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].start}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">目的地址</view>
-		<input class="text-cut" value="{{target}}" bindtap="showModal" maxlength="20"></input>
-    <text class="cuIcon-locationfill text-orange"></text>
+		<text class="text-cut" bindtap="showModal" data-target="toAddress">{{elements[idx].target}}</text>
+		<button class="cu-btn bg-yellow" bindtap="gotoPage">修改地址</button>
+	</view>
+	<view class="cu-modal {{modalName=='toAddress'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].target}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
 	</view>
 	<view class="cu-form-group">
-		<view class="title">私密信息</view>
-		<input class="text-cut" value="{{self}}" bindtap="showModal" maxlength="20"></input>
+		<view class="title">保护信息</view>
+		<input class="text-cut" value="{{elements[idx].self}}" bindtap="showModal" maxlength="20"></input>
   </view>
 	<view class="cu-form-group">
-		<view class="title">备注</view>
-		<input class="text-cut" value="{{message}}" bindtap="showModal" maxlength="20"></input>
+		<view class="title">订单描述</view>
+		<input class="text-cut" value="{{elements[idx].message}}" bindtap="showModal" maxlength="20"></input>
 	</view>
 	<view class="cu-form-group">
-		<view class="title">订单地理位置</view>
+		<view class="title">订单当前位置</view>
 		<view class="text-new">
-			<text class="text-cut" bindtap="showModal" data-target="Place">{{place}}</text>
+			<text class="text-cut" bindtap="showModal" data-target="Place">{{elements[idx].place}}</text>
 		</view>
-    <text class="cuIcon-locationfill text-orange"></text>
+		<text class="cuIcon-locationfill text-blue"></text>
 	</view>
 	<view class="cu-modal {{modalName=='Place'?'show':''}}">
   	<view class="cu-dialog">
     	<view class="cu-bar bg-white shadow">
-      	<text>{{place}}</text>
+      	<text>{{elements[idx].place}}</text>
       	<view class="action" bindtap="hideModal">
         	<text class="cuIcon-close text-red"></text>
       	</view>
@@ -69,24 +89,14 @@
 	<view class="cu-form-group">
 		<view class="title">订单状态</view>
 		<view class="text-new">
-			<text class="text-cut" bindtap="showModal" data-target="State">{{state}}</text>
+			<text class="text-cut">{{elements[idx].state}}</text>
 		</view>
-	</view>
-	<view class="cu-modal {{modalName=='State'?'show':''}}">
-  	<view class="cu-dialog">
-    	<view class="cu-bar bg-white shadow">
-      	<text>{{state}}</text>
-      	<view class="action" bindtap="hideModal">
-        	<text class="cuIcon-close text-red"></text>
-      	</view>
-    	</view>
-  	</view>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">代币数额</view>
 		<view class='select_box'>
  			<view class='select' catchtap='selectTap'>
-				<text class='select_text'>{{selectData[index]}}</text>
+				<text class='select_text'>{{selectData[Index]}}</text>
 				<text class="cuIcon-triangledownfill"></text>
  			</view>
  			<view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
@@ -100,5 +110,8 @@
         <text class="title">聊天</text>
       </navigator>
 		</view>
+	</view>
+	<view class="padding flex flex-direction">
+  	<button class="cu-btn bg-red margin-tb-sm lg">删除下单</button>
 	</view>
 </form>
