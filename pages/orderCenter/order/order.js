@@ -14,22 +14,22 @@ Page({
         "detail": "从快递点凭取件码xxxxx取快递送到39楼楼下，联系电话xxxxx，当面取，急！！",
         "time": "21:10",
         "emergency": 5,
-        "from": "34楼后快递点",
-        "to": "39楼楼下",
+        "from": "北京大学34楼后快递点",
+        "to": "北京大学45乙539",
         "object": "快递",
         "avatar": "/images/LOGO.png"
       },
       {
-        "title": "食堂外带",
+        "title": "拿快递",
         "name": "UserCold",
         "reward": 1,
         "requestID": 1,
         "detail": "帮忙家园三楼打包一份鸡腿饭送到45乙楼下把，谢谢",
         "time": "19:22",
         "emergency": 2,
-        "from": "34楼后快递点",
-        "to": "45乙楼楼下",
-        "object": "鸡腿饭",
+        "from": "北京大学34楼后快递点",
+        "to": "北京大学第二教学楼",
+        "object": "快递",
         "avatar": "/images/LOGO.png"
       }
 

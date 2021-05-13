@@ -1,5 +1,5 @@
 <scroll-view scroll-y="{{modalName==null}}" class="page {{modalName!=null?'show':''}}">
-  <cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+  <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
     <view slot="backText">返回</view>
     <view slot="content">消息</view>
   </cu-custom>
@@ -61,7 +61,7 @@
   </view>
   <view class="cu-list menu-avatar">
     <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
-      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="cu-avatar round lg" style="background-image:url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r);"></view>
       <view class="content">
       <view class="text-grey">翟天一</view>
         <view class="text-gray text-sm flex">
@@ -74,7 +74,7 @@
       </view>
     </navigator>
     <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
-      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="cu-avatar round lg" style="background-image:url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r);"></view>
       <view class="content">
       <view class="text-grey">陶坤鹏</view>
         <view class="text-gray text-sm flex">
@@ -87,7 +87,7 @@
       </view>
     </navigator>
     <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
-      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="cu-avatar round lg" style="background-image:url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r);"></view>
       <view class="content">
       <view class="text-grey">武艺</view>
         <view class="text-gray text-sm flex">
@@ -100,7 +100,7 @@
       </view>
     </navigator>
     <navigator class="cu-item" url="/pages/orderCenter/chat/chat" hover-class="none">
-      <view class="cu-avatar round lg" style="background-image:url(https://pkusender.github.io/images/LOGO.png);"></view>
+      <view class="cu-avatar round lg" style="background-image:url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r);"></view>
       <view class="content">
       <view class="text-grey">李天</view>
         <view class="text-gray text-sm flex">
