@@ -8,6 +8,7 @@
     "pages/order/home/home",
     "pages/takeOrder/home/home",
     "pages/takeOrder/detail/detail",
+    "pages/orderCenter/myform/address/address",
     "pages/orderCenter/home/home",
     "pages/orderCenter/chat/chat",
     "pages/orderCenter/chatform/chatform",
