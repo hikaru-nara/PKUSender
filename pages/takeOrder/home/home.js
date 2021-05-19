@@ -53,6 +53,25 @@ Page({
    */
   onLoad: function (options) {
     // console.log(1);
+    wx.request({
+      url: 'http://47.97.40.237:8000/order/?order_req=1',
+      method: 'GET',
+      success: (res)=>{
+        // console.log(JSON.parse(res.data))
+        wx.setStorageSync({
+          key: 'Untaken-Order-List', 
+          data:res.data
+        })
+      }
+    })
+    wx.getStorageSync({
+      key:'Untaken-Order-List',
+      success: (res)=>{
+        this.setData({
+          elements: res
+        })
+      }
+    })
     app.editTabbar();
   },
 

@@ -60,6 +60,16 @@ Page({
       })}, 2000
     )
   },
+  takeOrderBtnTap(e){
+    var idx = this.data.idx
+    var order = this.data.elements[idx] // order in json format
+    wx.request({
+      url: 'http://47.97.40.237:8000/order/',
+      method: 'POST',
+      data: order
+    })
+    this.showModal_time(e)
+  },
   // 点击下拉显示框
   selectTap(){
     this.setData({
@@ -100,6 +110,14 @@ Page({
     })
     this.setData({
       idx:index
+    })
+    wx.getStorageSync({
+      key:'Untaken-Order-List',
+      success: (res)=>{
+        this.setData({
+          elements: res
+        })
+      }
     })
   },
 
