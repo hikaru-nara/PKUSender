@@ -1,18 +1,39 @@
 // pages/plugin/coinRemain/coinRemain.js
+const app =  getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    coinNumber: 0,
+    reputation: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(!app.globalData.userInfo.coinNumber){
+      this.setData({
+        coinNumber: app.globalData.initCoinNumber
+      })
+    }
+    else{
+      this.setData({
+        coinNumber: app.globalData.userInfo.coinNumber
+      })
+    }
+    if(!app.globalData.userInfo.reputation){
+      this.setData({
+        reputation: app.globalData.initReputation
+      })
+    }
+    else{
+      this.setData({
+        reputation: app.globalData.userInfo.reputation
+      })
+    }
   },
 
   /**

@@ -34,5 +34,8 @@
       </navigator>
     </view>
   </view>
-
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-blue margin-tb-sm lg"  wx:if="{{!hasUserInfo && canIUseGetUserProfile}}" bindtap="getUserProfile"> 授权信息 </button>
+    <button class="cu-btn bg-blue margin-tb-sm lg"  wx:elif="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权信息 </button>
+  </view>
 </scroll-view>

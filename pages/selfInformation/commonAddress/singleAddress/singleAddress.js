@@ -1,5 +1,6 @@
 // pages/selfInformation/commonAddress/singleAddress/singleAddress.js
 const utils = require('../../../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -8,7 +9,7 @@ Page({
   data: {
     addressList:"addressList",
     title:'',
-    index:0,
+    index: null,
     newAddressData:''
   },
 
@@ -24,12 +25,32 @@ Page({
     utils.updateAddressList(this);
     // console.log(this.data.addressList)
     if(this.data.newAddressData != ''){
-      var tmpAddressList = this.data.addressList;
-      tmpAddressList.push({strMessage:this.data.newAddressData});
+      let tmpAddressList = this.data.addressList;
+      console.log(this.data.index)
+      if(this.data.index != null && this.data.index >=0 ){
+        // console.log('yes')
+        tmpAddressList[this.data.index] = {strMessage:this.data.newAddressData}
+      }
+      else{
+        tmpAddressList.push({strMessage:this.data.newAddressData});
+      }
+      this.setData({
+        addressList: tmpAddressList
+      });
       wx.setStorage({//存储到本地
         key:"addressList",
         data:tmpAddressList
       });
+    }
+    if(!app.globalData.checkMode){
+      wx.request({
+        url: app.globalData.serverUrl+'?wx_id' + String(app.globalData.userInfo.userID)+ '&change_addresslist',
+        method: 'POST',
+        data : this.data.addressList,
+        success: (res)=>{
+          console.log('singleAddress addAddressData post succeed')
+        }
+      })
     }
     // 修改之后记得同步到服务器端
     wx.navigateBack({         //返回上一页  
@@ -41,10 +62,23 @@ Page({
     utils.updateAddressList(this);
     var tmpAddressList = this.data.addressList;
     tmpAddressList.splice(this.data.index, 1);
+    this.setData({
+      addressList: tmpAddressList
+    });
     wx.setStorage({//存储到本地
       key:"addressList",
       data:tmpAddressList
     });
+    if(!app.globalData.checkMode){
+      wx.request({
+        url: app.globalData.serverUrl+'?wx_id' + String(app.globalData.userInfo.userID)+ '&change_addresslist',
+        method: 'POST',
+        data : this.data.addressList,
+        success: (res)=>{
+          console.log('singleAddress deleteAddressData post succeed')
+        }
+      })
+    }
     // 修改之后记得同步到服务器端
     wx.navigateBack({         //返回上一页  
       delta:1

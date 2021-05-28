@@ -7,11 +7,11 @@
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item">
       <text class="text-black text-l">代币余额</text>
-      <text class="text-yellow text-xl">50</text>
+      <text class="text-yellow text-xl">{{coinNumber}}</text>
     </view>
     <view class="cu-item">
       <text class="text-black text-l">信用分</text>
-      <text class="text-green text-xl">100</text>
+      <text class="text-green text-xl">{{reputation}}</text>
     </view>
     <view class="cu-item arrow">
         <navigator class="content" url="/pages/selfInformation/coinRemain/coinRemain" hover-class="none">
