@@ -61,13 +61,19 @@ Page({
     )
   },
   takeOrderBtnTap(e){
+    console.log('64')
     var idx = this.data.idx
     var order = this.data.elements[idx] // order in json format
+    order.type = 10 //更新helperid
+    console.log('68')
+    order.helper_id = app.globalData.userInfo.nickName
+    console.log('68')
     wx.request({
       url: 'http://47.97.40.237:8000/order/',
       method: 'POST',
       data: order
     })
+    console.log(order)
     this.showModal_time(e)
   },
   // 点击下拉显示框
@@ -111,11 +117,25 @@ Page({
     this.setData({
       idx:index
     })
-    wx.getStorageSync({
+    // try {
+    //   console.log('119')
+    //   var order_list = wx.getStorageSync('Untaken-Order-List')
+    //   console.log(order_list)
+    //   if (order_list) {
+    //     this.setData({
+    //       elements:order_list
+    //     })
+    //     // Do something with return value
+    //   }
+    // } catch (e) {
+    //   console.log('Error when loading the order')
+      // Do something when catch error
+    // }
+    wx.getStorage({
       key:'Untaken-Order-List',
       success: (res)=>{
         this.setData({
-          elements: res
+          elements: res.data
         })
       }
     })

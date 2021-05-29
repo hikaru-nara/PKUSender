@@ -19,7 +19,7 @@
       </view>
       <view class="action">
         <!-- 发布时间 -->
-        <view class="text-grey text-xs">发布时间</view>
+        <view class="text-grey text-xs">{{item.create_time}}</view>
         <!-- 赏金 TODO: color -->
         <view class="cu-tag round bg-orange sm">{{item.coin_cost}}</view>
       </view>

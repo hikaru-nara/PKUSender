@@ -53,25 +53,37 @@ Page({
    */
   onLoad: function (options) {
     // console.log(1);
-    wx.request({
-      url: 'http://47.97.40.237:8000/order/?order_req=1',
-      method: 'GET',
-      success: (res)=>{
-        // console.log(JSON.parse(res.data))
-        wx.setStorageSync({
-          key: 'Untaken-Order-List', 
-          data:res.data
-        })
-      }
-    })
-    wx.getStorageSync({
-      key:'Untaken-Order-List',
-      success: (res)=>{
-        this.setData({
-          elements: res
-        })
-      }
-    })
+    // wx.request({
+    //   url: 'http://47.97.40.237:8000/pkusender/order_wait/?index=1&num=15',
+    //   method: 'GET',
+    //   success: (res)=>{
+    //     var ticketlist = JSON.parse(res.data)
+    //     console.log(ticketlist)
+    //     wx.setStorage({
+    //       key: 'Untaken-Order-List', 
+    //       data:ticketlist
+    //     })
+    //     this.setData({
+    //       elements: ticketlist
+    //     })
+    //     console.log('ticketlist')
+    //   }
+    // })
+    // console.log('69')
+    // wx.getStorageSync({
+    //   key:'Untaken-Order-List',
+    //   success: (res)=>{
+    //     console.log('success')
+    //     console.log(res)
+    //     this.setData({
+    //       elements: res
+    //     })
+    //   },
+    //   fail: (res)=>{
+    //     console.log('fail')
+    //   }
+    // })
+    // console.log('finish')
     app.editTabbar();
   },
 
@@ -86,7 +98,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.request({
+      url: 'http://47.97.40.237:8000/pkusender/order_wait/?index=1&num=15',
+      method: 'GET',
+      success: (res)=>{
+        var ticketlist = JSON.parse(res.data)
+        wx.setStorage({
+          key: 'Untaken-Order-List', 
+          data:ticketlist
+        })
+        this.setData({
+          elements: ticketlist
+        })
+        // console.log(ticketlist[0])
+      }
+    })
   },
 
   /**
