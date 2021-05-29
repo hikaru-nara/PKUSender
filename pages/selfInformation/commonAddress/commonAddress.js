@@ -1,5 +1,6 @@
 // pages/plugin/commonAddress/commonAddress.js
 const utils = require('../../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -7,11 +8,7 @@ Page({
    */
   data: {
     // 之后这里的addressList初始化从服务器读
-    addressList: [{
-      strMessage: '北京大学45乙楼504室'
-    }, {
-      strMessage: '北京大学第二教学楼'
-    }]
+    addressList: null
   },
 
   addButtonGoto: function(){
@@ -23,7 +20,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var tmpAddressList = this.data.addressList;
+    if(!app.globalData.checkMode){
+      wx.request({
+        url: app.globalData.serverUrl+'?wx_id' + String(app.globalData.userInfo.userID),
+        method: 'GET',
+        success: (res)=>{
+          console.log('commonAddress get succeed')
+          this.setData({
+            addressList: JSON.parse(res.data)[0].addressList
+          })
+        }
+      })
+    }
+    let tmpAddressList = app.globalData.userInfo.addressList;
+    this.setData({
+      addressList: app.globalData.userInfo.addressList
+    })
     // console.log("Common Address");
     wx.setStorage({//存储到本地
       key:"addressList",

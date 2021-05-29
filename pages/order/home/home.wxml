@@ -9,12 +9,12 @@
   <form>
     <view class="cu-form-group margin-top">
       <view class="title">起始地址</view>
-      <input placeholder="订单起始地址"></input>
+      <input placeholder="订单起始地址" class="order_input" placeholder-class="order_placeholder"></input>
       <text class="cuIcon-locationfill text-blue"></text>
     </view>
     <view class="cu-form-group">
       <view class="title">目的地址</view>
-      <input placeholder="订单目的地址"></input>
+      <input placeholder="订单目的地址" class="order_input" placeholder-class="order_placeholder"></input>
       <text class="cuIcon-locationfill text-blue"></text>
     </view>
     <view class="cu-form-group">

@@ -5,3 +5,7 @@
   font-size: 35rpx;
 	color: var(--black);
 }
+
+.basic_placeholder, .basic_input {
+  text-align: right;
+}
