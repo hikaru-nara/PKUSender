@@ -20,21 +20,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(!app.globalData.checkMode){
-      wx.request({
-        url: app.globalData.serverUrl+'?wx_id' + String(app.globalData.userInfo.userID),
-        method: 'GET',
-        success: (res)=>{
-          console.log('commonAddress get succeed')
-          this.setData({
-            addressList: JSON.parse(res.data)[0].addressList
-          })
-        }
-      })
-    }
-    let tmpAddressList = app.globalData.userInfo.addressList;
+    // if(!app.globalData.checkMode){
+    //   wx.request({
+    //     url: app.globalData.serverUrl+'?wx_id' + String(app.globalData.userInfo.userID),
+    //     method: 'GET',
+    //     success: (res)=>{
+    //       console.log('commonAddress get succeed')
+    //       this.setData({
+    //         addressList: JSON.parse(res.data)[0].addressList
+    //       })
+    //     }
+    //   })
+    // }
+    let tmpAddressList = app.globalData.userInfo.address;
     this.setData({
-      addressList: app.globalData.userInfo.addressList
+      addressLList: app.globalData.userInfo.address
     })
     // console.log("Common Address");
     wx.setStorage({//存储到本地

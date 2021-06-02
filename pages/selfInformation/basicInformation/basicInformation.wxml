@@ -7,16 +7,16 @@
     <view class="cu-form-group margin-top">
       <view class="title">userID</view>
       <!-- 这里需要一个用户的userID的信息 -->
-      <view class="userIDText">{{userInfo.userID}}</view>
+      <view class="userIDText">{{userInfo.user_id}}</view>
     </view>
     <view class="cu-form-group">
       <view class="title">昵称</view>
-      <input class="basic_input" placeholder-class="basic_placeholder" bindinput="setNickName" placeholder="{{userInfo.nickName}}" ></input>
+      <input class="basic_input" placeholder-class="basic_placeholder" bindinput="setNickName" placeholder="{{userInfo.user_name}}" ></input>
     </view>
-    <view class="cu-form-group">
+    <!-- <view class="cu-form-group">
       <view class="title">学号</view>
-      <input class="basic_input" placeholder-class="basic_placeholder" bindinput="setStudentID" placeholder="{{userInfo.studentID}}"></input>
-    </view>
+      <input class="basic_input" placeholder-class="basic_placeholder" bindinput="setStudentID" placeholder="{{userInfo.student_id}}"></input>
+    </view> -->
     <view class="cu-form-group">
       <view class="title">性别</view>
       <picker bindchange="PickerChange" value="{{index}}" range="{{genderPicker}}">
@@ -27,7 +27,7 @@
     </view>
     <view class="cu-form-group">
       <view class="title">头像</view>
-      <view class="cu-avatar round" style="background-image:url({{userInfo.avatarUrl}})"></view>
+      <view class="cu-avatar round" style="background-image:url({{userInfo.avatar_url}})"></view>
     </view>
   </form>
   <view class="padding flex flex-direction">

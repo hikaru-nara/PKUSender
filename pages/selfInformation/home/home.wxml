@@ -1,20 +1,22 @@
 <scroll-view scroll-y class="scrollPage">
   <!-- 这里需要从后端数据库读数据 -->
   <view class="self-information-bg">
-    <view class="padding">
+      <image src="http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r" class="png"  mode="widthFix"
+      wx:if="{{!hasUserInfo}}"></image>
+    <view class="padding" wx:if="{{hasUserInfo}}">
       <!-- 这里的xxl需要自己写 -->
       <!-- 之后信息要改，初始是从登录信息里面读取，之后就是从数据库中读取了，要写个判断 -->
       <!-- 数据字典里要加上性别的信息 -->
-      <view class="cu-avatar xxl round margin-center" style="background-image:url({{userInfo.avatarUrl}})">
+      <view class="cu-avatar xxl round margin-center" style="background-image:url({{userInfo.avatar_url}})">
         <view class="cu-tag badge {{userInfo.gender%3 == 2?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
       </view>
     </view>
     <view class="solid-bottom text-xxl margin-center">
-      <text class="text-black">{{userInfo.nickName}}</text>
+      <text class="text-black">{{userInfo.user_name}}</text>
     </view>
     <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
-  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius"  wx:if="{{hasUserInfo}}">
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/selfInformation/basicInformation/basicInformation" hover-class="none">
         <text class="cuIcon-newshotfill text-green"></text>
@@ -34,6 +36,11 @@
       </navigator>
     </view>
   </view>
+
+  <view class="padding flex flex-direction"></view>
+  <view class="padding flex flex-direction"></view>
+  <view class="padding flex flex-direction"></view>
+  <view class="padding flex flex-direction"></view>
   <view class="padding flex flex-direction">
     <button class="cu-btn bg-blue margin-tb-sm lg"  wx:if="{{!hasUserInfo && canIUseGetUserProfile}}" bindtap="getUserProfile"> 授权信息 </button>
     <button class="cu-btn bg-blue margin-tb-sm lg"  wx:elif="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 授权信息 </button>
