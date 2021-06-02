@@ -9,11 +9,12 @@ Page({
     // 之后这里的addressList初始化从服务器读
     address:['北京大学45乙楼504室','北京大学45乙楼539室'],
   },
-  selectAddress: function () {
-    if(this.data.newAddressData != ''){
-      var tmpAddressList = this.data.address;
-      tmpAddressList.push({strMessage:this.data.newAddressData});
-    }
+  selectAddress: function (e) {
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
+    prevPage.setData({
+      Start:e.currentTarget.dataset.msg,
+    })
     // 修改之后记得同步到服务器端
     wx.navigateBack({         //返回上一页  
       delta:1
