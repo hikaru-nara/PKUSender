@@ -18,6 +18,20 @@
   text-align: right;
 }
 
+.warning_placeholder, .warning_input {
+  text-align: right;
+  color: red;
+}
+.warning_placeholder {
+  color: red;
+}
+
+
+.cu-form-group picker .warning_picker{
+  color: red
+}
+
+
 .order-bg text {
   opacity: 0.8;
 }

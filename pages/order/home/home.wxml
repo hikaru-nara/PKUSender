@@ -9,34 +9,45 @@
   <form>
     <view class="cu-form-group margin-top">
       <view class="title">起始地址</view>
-      <input placeholder="订单起始地址" class="order_input" placeholder-class="order_placeholder"></input>
+      <input placeholder="订单起始地址" value="{{tmp_value}}" wx:if="{{!src_address_label}}" class="order_input" placeholder-class="order_placeholder" bindinput="set_src_address" ></input>
+      <input placeholder="请填写订单起始地址" value="{{tmp_value}}" wx:else class="warning_input" placeholder-class="warning_placeholder" bindinput="set_src_address" ></input>
       <text class="cuIcon-locationfill text-blue"></text>
     </view>
     <view class="cu-form-group">
       <view class="title">目的地址</view>
-      <input placeholder="订单目的地址" class="order_input" placeholder-class="order_placeholder"></input>
+      <input placeholder="订单目的地址" value="{{tmp_value}}" wx:if="{{!dest_address_label}}" class="order_input" placeholder-class="order_placeholder" bindinput="set_dest_address" ></input>
+      <input placeholder="请填写订单目的地址" value="{{tmp_value}}" wx:else class="warning_input" placeholder-class="warning_placeholder" bindinput="set_dest_address" ></input>
       <text class="cuIcon-locationfill text-blue"></text>
     </view>
     <view class="cu-form-group">
       <view class="title">代币数量</view>
       <picker bindchange="PickerChange" value="{{index}}" range="{{coinNumPicker}}">
-        <view class="picker">
+        <view class="picker" wx:if="{{!coin_cost_label}}">
           {{index?coinNumPicker[index]:'悬赏代币数量'}}
+        </view>
+        <view class="picker" wx:else>
+          <view class="warning_picker">
+            {{index?coinNumPicker[index]:'请选择代币数量'}}
+          </view>
         </view>
       </picker>
     </view>
     <view class="cu-form-group align-start">
       <view class="title">订单描述</view>
-      <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="订单简短描述"></textarea>
+      <textarea maxlength="-1" placeholder="订单简短描述" value="{{tmp_value}}" bindinput="set_description" wx:if="{{!description_label}}"></textarea>
+      <textarea maxlength="-1" placeholder="请填写订单描述" value="{{tmp_value}}" bindinput="set_description" wx:else placeholder-class="warning_placeholder"></textarea>
     </view>
     <view class="cu-form-group align-start">
       <view class="title">保护信息</view>
-      <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaBInput" placeholder="例如取件码等关键信息，接单之前无法查看"></textarea>
+      <textarea maxlength="-1"  placeholder="例如取件码等关键信息，接单之前无法查看" value="{{tmp_value}}" bindinput="set_secret_info" wx:if="{{!secret_info_label}}"></textarea>
+      <textarea maxlength="-1"  placeholder="请填写保护信息" bindinput="set_secret_info" value="{{tmp_value}}" wx:else placeholder-class="warning_placeholder"></textarea>
     </view>
   </form>
   <view class="padding flex flex-direction">
-    <!-- 这里点击提交要检验各项信息是否准确，否则打回重填 -->
-    <!-- 提交成功后可以弹一个小窗口，提醒用户在订单中心里查询此单 -->
-    <button class="cu-btn bg-blue margin-tb-sm lg"> 提交订单 </button>
+    <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="updateOrderInfo"> 提交订单 </button>
+    <!-- <button class="cu-btn bg-red margin-tb-sm lg" bindtap="init_parameters"> 放弃填写 </button> -->
   </view>
+  
+    
+  
 </scroll-view>

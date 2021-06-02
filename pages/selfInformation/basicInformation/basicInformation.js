@@ -1,3 +1,5 @@
+const utils = require("../../../utils/util");
+
 // pages/plugin/basicInformation/basicInformation.js
 const app = getApp();
 Page({
@@ -9,27 +11,27 @@ Page({
     index: null,
     genderPicker: ['保密', '男', '女'],
     userInfo : null,
-    nickName : null,
-    studentID : null,
+    user_name : null,
+    student_id : null,
     gender : null,
   },
   
   PickerChange(e) {
-    console.log(e);
+    // console.log(e);
     this.setData({
       index: e.detail.value,
-      gender: genderPicker[e.detail.value]
+      gender: e.detail.value,
     })
   },
 
   updateUserInfo: function(e){
     // 这里之后可以写一个合理性检验
     let tmpUserInfo = this.data.userInfo;
-    if(this.data.nickName != null){
-      tmpUserInfo.nickName = this.data.nickName;
+    if(this.data.user_name != null){
+      tmpUserInfo.user_name = this.data.user_name;
     }
-    if(this.data.studentID != null){
-      tmpUserInfo.studentID = this.data.studentID;
+    if(this.data.student_id != null){
+      tmpUserInfo.student_id = this.data.student_id;
     }
     if(this.data.gender != null){
       tmpUserInfo.gender = this.data.gender;
@@ -40,11 +42,14 @@ Page({
     app.globalData.userInfo = this.data.userInfo;
     // 向服务器发送同步信息
     if(!app.globalData.checkMode){
+      let post_data = {}
+      utils.get_post_userInfo(this.data.userInfo, post_data, 20, app.globalData.sep_op)
       wx.request({
-        url: app.globalData.serverUrl+'?wx_id' + String(this.data.userInfo.userID),
+        url: app.globalData.serverUrl+'/user/',
         method: 'POST',
-        data : this.data.userInfo,
+        data : post_data,
         success: (res)=>{
+          console.log(res)
           console.log('basicInformation post succeed')
         }
       })
@@ -56,13 +61,13 @@ Page({
 
   setNickName: function (e) {
     this.setData({
-      nickName: e.detail.value
+      user_name: e.detail.value
     })
   },
 
   setStudentID: function (e) {
     this.setData({
-      studentID: e.detail.value
+      student_id: e.detail.value
     })
   },
 

@@ -1,3 +1,4 @@
+// const util = require('../../../../utils/util.js');
 // pages/selfInformation/commonAddress/singleAddress/singleAddress.js
 const utils = require('../../../../utils/util.js');
 const app = getApp();
@@ -26,7 +27,7 @@ Page({
     // console.log(this.data.addressList)
     if(this.data.newAddressData != ''){
       let tmpAddressList = this.data.addressList;
-      console.log(this.data.index)
+      // console.log(this.data.index)
       if(this.data.index != null && this.data.index >=0 ){
         // console.log('yes')
         tmpAddressList[this.data.index] = {strMessage:this.data.newAddressData}
@@ -41,13 +42,18 @@ Page({
         key:"addressList",
         data:tmpAddressList
       });
+      app.globalData.userInfo.address = tmpAddressList;
     }
     if(!app.globalData.checkMode){
+      let post_data = {}
+      utils.get_post_userInfo(app.globalData.userInfo, post_data, 11, app.globalData.sep_op)
+      // post_data.address = utils.code_address(post_data.address, app.globalData.sep_op)
       wx.request({
-        url: app.globalData.serverUrl+'?wx_id' + String(app.globalData.userInfo.userID)+ '&change_addresslist',
+        url: app.globalData.serverUrl+'/user/',
         method: 'POST',
-        data : this.data.addressList,
+        data : post_data,
         success: (res)=>{
+          // console.log(post_data)
           console.log('singleAddress addAddressData post succeed')
         }
       })
@@ -69,12 +75,17 @@ Page({
       key:"addressList",
       data:tmpAddressList
     });
+    app.globalData.userInfo.address = tmpAddressList;
     if(!app.globalData.checkMode){
+      let post_data = {}
+      utils.get_post_userInfo(app.globalData.userInfo, post_data, 11, app.globalData.sep_op)
+      // post_data.address = utils.code_address(post_data.address, app.globalData.sep_op)
       wx.request({
-        url: app.globalData.serverUrl+'?wx_id' + String(app.globalData.userInfo.userID)+ '&change_addresslist',
+        url: app.globalData.serverUrl+'/user/',
         method: 'POST',
-        data : this.data.addressList,
+        data : post_data,
         success: (res)=>{
+          console.log(res)
           console.log('singleAddress deleteAddressData post succeed')
         }
       })

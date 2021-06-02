@@ -1,12 +1,13 @@
 //index.js
 //获取应用实例
 const app = getApp();
-
+const utils = require('../../../utils/util.js');
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    userInfo: {},
+    userInfo: null,
+    avatar_url : null,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
@@ -42,35 +43,49 @@ Page({
     wx.getUserProfile({
       desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        console.log(res.userInfo)
-        let tmpUserInfo = res.userInfo;
-        tmpUserInfo.studentID = app.globalData.initStudentID;
-        tmpUserInfo.userID = res.userInfo.nickName;
-        tmpUserInfo.addressList = app.globalData.initAddressList;
-        tmpUserInfo.coinNumber = app.globalData.initCoinNumber;
-        tmpUserInfo.reputation = app.globalData.initReputation;
+        // console.log(res.userInfo)
+        let tmpUserInfo = {}
+        // tmpUserInfo.student_id = app.globalData.initStudentID;
+        tmpUserInfo.user_id = res.userInfo.nickName;
+        tmpUserInfo.user_name = res.userInfo.nickName;
+        tmpUserInfo.gender = res.userInfo.gender;
+        tmpUserInfo.address = app.globalData.init_address;
+        tmpUserInfo.coin_num = app.globalData.init_coin_num;
+        tmpUserInfo.credit = app.globalData.init_credit;
+        tmpUserInfo.call_order_list = app.globalData.init_call_order_list;
+        tmpUserInfo.take_order_list = app.globalData.init_take_order_list;
+        tmpUserInfo.avatar_url = res.userInfo.avatarUrl;
         this.setData({
           userInfo: tmpUserInfo,
-          hasUserInfo: true
+          hasUserInfo: true,
+          avatar_url: res.userInfo.avatarUrl
         })
         app.globalData.userInfo = tmpUserInfo;
+        // console.log(tmpUserInfo)
         if(!app.globalData.checkMode){
           wx.request({
-            url: app.globalData.serverUrl+'?wx_id'+String(tmpUserInfo.userID),
+            url: app.globalData.serverUrl+'/user/?user_id='+tmpUserInfo.user_id+'&type=0',
             method: 'GET',
             success: (res)=>{
-              if (JSON.parse(res.data).length == 0){
+              if (res.data != 'user_id error!'){
+                // console.log(res.data)
                 this.setData({
                   userInfo: JSON.parse(res.data)[0]
                 })
+                this.data.userInfo.address = utils.parse_address(this.data.userInfo.address, app.globalData.sep_op);
+                app.globalData.userInfo = this.data.userInfo;
                 console.log('selfInfomation home get succeed')
               }
               else{
+                let post_data = {}
+                utils.get_post_userInfo(this.data.userInfo, post_data, 0, app.globalData.sep_op)
+                // console.log(post_data)
                 wx.request({
-                  url: app.globalData.serverUrl+'?wx_id'+String(tmpUserInfo.userID),
+                  url: app.globalData.serverUrl+'/user/',
                   method: 'POST',
-                  data: this.data.userInfo,
+                  data: post_data,
                   success: (res)=>{
+                    console.log(res)
                     console.log('selfInformation home post succeed')
                   }
                 })
