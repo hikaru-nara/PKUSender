@@ -78,17 +78,20 @@ App({
 
   globalData: {
     systemInfo: null,//客户端设备信息
-    serverUrl: 'http://47.97.40.237:8000/user/',
-    userInfo: null,
-    checkMode: true,
-    initStudentID: 1700012964,
-    initAddressList: [{
+    serverUrl: 'http://47.97.40.237:8000/pkusender',
+    userInfo: {},
+    checkMode: false,
+    init_student_ID: 1700012964,
+    init_address: [{
       strMessage: '北京大学45乙楼504室'
     }, {
       strMessage: '北京大学第二教学楼'
     }],
-    initCoinNumber: 50,
-    initReputation: 100,
+    init_coin_num: 50,
+    init_credit: 100,
+    init_call_order_list: '',
+    init_take_order_list: '',
+    sep_op: '<SEP>',
     tabBar: {
       "backgroundColor": "#ffffff",
       "color": "#979795",
