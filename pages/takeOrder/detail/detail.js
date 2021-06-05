@@ -50,6 +50,7 @@ Page({
     ],
     idx: -1
   },
+
   showModal_time(e){
     this.setData({
       modalName: e.currentTarget.dataset.target
@@ -65,6 +66,7 @@ Page({
     var idx = this.data.idx
     console.log(this.data.elements)
     var order = this.data.elements[idx] // order in json format
+    
     var app = getApp()
     order.type = '10' //更新helperid
     console.log('68')
