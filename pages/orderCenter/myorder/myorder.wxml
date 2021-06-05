@@ -66,10 +66,10 @@
       <view class="cu-avatar round lg" style="background-image:url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r);"></view>
       <view class="content">
         <!-- 订单类别/概述 -->
-        <view class="text-grey">{{item.title}}</view>
+        <view class="text-grey">{{item.order_id}}</view>
         <view class="text-gray text-sm flex">
           <text class="text-cut">
-              <text class="cuIcon-infofill text-white  margin-right-xs"></text> <text style="color:var(--grey)">起点：</text>{{item.from}} <text style="color:var(--grey)">终点：</text>{{item.to}} 
+              <text class="cuIcon-infofill text-white  margin-right-xs"></text> <text style="color:var(--grey)">起点：</text>{{item.src_address}} <text style="color:var(--grey)">终点：</text>{{item.dest_address}} 
           </text>
         </view>
       </view>
@@ -77,7 +77,7 @@
         <!-- 发布时间 -->
         <view class="text-grey text-xs">{{item.time}}</view>
         <!-- 赏金 TODO: color -->
-        <view class="cu-tag round bg-orange sm">{{item.reward}}</view>
+        <view class="cu-tag round bg-orange sm">{{item.coin_cost}}</view>
       </view>
     </view>
   </view>

@@ -1,31 +1,5 @@
 const app = getApp();
 Page({
-  data:{
-    elements:[
-      {
-        "human1": "歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜",
-        "human2": "帕布罗.迭戈.荷瑟.山迪亚哥.弗朗西斯科.德.保拉.居安.尼波莫切诺.克瑞斯皮尼亚诺.德.罗斯.瑞米迪欧斯.西波瑞亚诺.德.拉.山迪西玛.特立尼达.玛利亚.帕里西奥.克里托.瑞兹.布拉斯科.毕加索",
-        "start": "北京大学34楼后快递点",
-        "target": "北京大学45乙539",
-        "self": "8号柜 取件码 123456789",
-        "place": "北京大学二教",
-        "message": "大件，轻拿轻放，是玻璃制品",
-        "state": "运送中",
-        "money": "3",
-      },
-      {
-        "human1": "我爱学习",
-        "human2": "帕布罗.迭戈.荷瑟.山迪亚哥.弗朗西斯科.德.保拉.居安.尼波莫切诺.克瑞斯皮尼亚诺.德.罗斯.瑞米迪欧斯.西波瑞亚诺.德.拉.山迪西玛.特立尼达.玛利亚.帕里西奥.克里托.瑞兹.布拉斯科.毕加索",
-        "start": "北京大学34楼后快递点",
-        "target": "北京大学第二教学楼",
-        "self": "近邻宝京东窗口 取件码 123456789",
-        "place": "北京大学五四运动场",
-        "message": "小件，很轻",
-        "state": "运送中",
-        "money": "1",
-      }
-    ]
-  },
 
   onLoad: function (option) {
     // console.log(options);
@@ -39,6 +13,28 @@ Page({
     })
     this.setData({
       idx:index
+    })
+    wx.getStorage({
+      key: 'receive_orders',
+      success: (res)=>{
+        this.setData({
+          elements: res.data
+        })
+        var State = this.data.State;
+        var order_status = this.data.elements[index].order_status;
+        if (order_status == 1){
+          State = "已接单"
+        }
+        else if(order_status == 2){
+          State = "已完成"
+        }
+        else if(order_status == 0){
+          State = "未接单"
+        }
+        this.setData({
+          State:State
+        })
+      }
     })
   },
   showModal(e) {
@@ -81,6 +77,11 @@ Page({
     this.setData({
       textareaAValue: e.detail.value
     })
+  },
+  DeleteOrder: function () {
+    wx.navigateBack({         //返回上一页  
+      delta:1
+    });
   },
   textareaBInput(e) {
     this.setData({

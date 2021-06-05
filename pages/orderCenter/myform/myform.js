@@ -1,37 +1,14 @@
 const app = getApp();
 Page({
   data:{
-    elements:[
-      {
-        "human1": "歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜",
-        "human2": "帕布罗.迭戈.荷瑟.山迪亚哥.弗朗西斯科.德.保拉.居安.尼波莫切诺.克瑞斯皮尼亚诺.德.罗斯.瑞米迪欧斯.西波瑞亚诺.德.拉.山迪西玛.特立尼达.玛利亚.帕里西奥.克里托.瑞兹.布拉斯科.毕加索",
-        "start": "北京大学34楼后快递点",
-        "target": "北京大学45乙539",
-        "self": "8号柜 取件码 123456789",
-        "place": "北京大学二教",
-        "message": "大件，轻拿轻放，是玻璃制品",
-        "state": "运送中",
-        "money": "3",
-        "INDEX":"2",
-      },
-      {
-        "human1": "我爱学习",
-        "human2": "帕布罗.迭戈.荷瑟.山迪亚哥.弗朗西斯科.德.保拉.居安.尼波莫切诺.克瑞斯皮尼亚诺.德.罗斯.瑞米迪欧斯.西波瑞亚诺.德.拉.山迪西玛.特立尼达.玛利亚.帕里西奥.克里托.瑞兹.布拉斯科.毕加索",
-        "start": "北京大学34楼后快递点",
-        "target": "北京大学第二教学楼",
-        "self": "近邻宝京东窗口 取件码 123456789",
-        "place": "北京大学五四运动场",
-        "message": "小件，很轻",
-        "state": "运送中",
-        "money": "1",
-        "INDEX":"0",
-      }
-    ],
     show:false,//控制下拉列表的显示隐藏，false隐藏、true显示
     selectData:['1','2','3','4','5'],//下拉列表的数据
-    "Index" : 0,
+    Index: 0,
+    Idx: 0,
+    Start: '',
+    Target: '',
+    State: ''
   },
-
     // 点击下拉显示框
     selectTap(){
       this.setData({
@@ -47,28 +24,46 @@ Page({
       });
     },
     onLoad: function (options) {
-      var tmpAddressList = this.data.start;
-      wx.setStorage({//存储到本地
-        key:"start",
-        data:tmpAddressList
-      });
       // console.log("Common Address");
       const eventChannel = this.getOpenerEventChannel()
-      // eventChannel.emit('acceptDataFromOpenedPage', {data: 'test'});
-      // eventChannel.emit('someEvent', {data: 'test'});
-      // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
       var index = 0;
       eventChannel.on('acceptDataFromOpenerPage', function(data) {
         index = data.index;
       })
-      let choiceidx = this.data.elements[index].INDEX;
-      let Index = this.data.Index;
-      Index = choiceidx;
-      this.setData({
-        idx:index,
-        Index
+      wx.getStorage({
+        key: 'place_orders',
+        success: (res)=>{
+ 
+          this.setData({
+            elements: res.data
+          })
+          var choiceidx = this.data.elements[index].coin_cost;
+          choiceidx = choiceidx - 1;
+          console.log(choiceidx)
+          var Start = this.data.elements[index].src_address;
+          var Target = this.data.elements[index].dest_address;
+          var State = this.data.State;
+          var order_status = this.data.elements[index].order_status;
+          if (order_status == 1){
+            State = "已接单"
+          }
+          else if(order_status == 2){
+            State = "已完成"
+          }
+          else if(order_status == 0){
+            State = "未接单"
+          }
+          this.setData({
+            idx:index,
+            Idx:index,
+            Index:choiceidx,
+            Start:Start,
+            Target:Target,
+            State:State
+          })
+        }
       })
-      console.log(this.data.Index);
+
     },
   showModal(e) {
     this.setData({
@@ -86,7 +81,12 @@ Page({
       index: e.detail.value
     })
   },
-  gotoPage:function(e) {
+  gotoStartPage:function(e) {
+    wx.navigateTo({
+      url: 'address/address',
+    })
+  },
+  gotoTargetPage:function(e) {
     wx.navigateTo({
       url: 'address/address',
     })
@@ -126,6 +126,21 @@ Page({
       InputBottom: e.detail.height,
       inputValue: e.detail.value
     })
+  },
+  CompleteOrder: function () {
+    this.setData({
+      State:"已完成"
+    });
+  },
+  ModifyOrder: function () {
+    wx.navigateBack({         //返回上一页  
+      delta:1
+    });
+  },
+  DeleteOrder: function () {
+    wx.navigateBack({         //返回上一页  
+      delta:1
+    });
   },
   bindKeyInput: function (e) {
     this.setData({
