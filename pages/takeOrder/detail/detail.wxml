@@ -17,18 +17,18 @@
     	</view>
   	</view>
   </view>
+	<view class="cu-form-group">
+		<view class="title">订单类别</view>
+		<text class="text-cut" bindtap="showModal" data-target="order_type">{{elements[idx].order_type}}</text>
+  </view>
   <view class="cu-form-group">
     <view class="title">起始地址</view>
-    <view class="text-new">
-    <text class="text-cut" bindtap="showModal" maxlength="20">{{elements[idx].src_address}}</text>
-  </view>
+    <text class="text-cut" bindtap="showModal" maxlength="20" data-target='src_addr'>{{elements[idx].src_address}}</text>
     <text class="cuIcon-locationfill text-orange"></text>
 	</view>
 	<view class="cu-form-group">
     <view class="title">目的地址</view>
-    <view class="text-new">
-      <text class="text-cut" maxlength="20">{{elements[idx].dest_address}}</text>
-    </view>
+      <text class="text-cut" bindtap="showModal" maxlength="20" data-target='tgt_addr'>{{elements[idx].dest_address}}</text>
     <text class="cuIcon-locationfill text-orange"></text>
 	</view>
 	<view class="cu-form-group" >
@@ -37,7 +37,7 @@
 	</view>
 	<view class="cu-form-group" >
 		<view class="title">代币数额</view>
-			<text class="text-cut" bindtap="showModal" maxlength="20" data-target="description">{{elements[idx].coin_cost}}</text>
+			<text class="text-cut" maxlength="20">{{elements[idx].coin_cost}}</text>
 	</view>
 	
   <view class="cu-modal {{modalName=='description'?'show':''}}">
@@ -50,10 +50,32 @@
     	</view>
   	</view>
 	</view>
+
+  <view class="cu-modal {{modalName=='src_addr'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].src_address}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+
+  <view class="cu-modal {{modalName=='tgt_addr'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].dest_address}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
 	
 	<view class="cu-form-group" >
 		<view class="title">下单时间</view>
-			<text class="text-cut" bindtap="showModal" maxlength="20" data-target="description">{{elements[idx].dest_address}}</text>
+			<text class="text-cut" maxlength="20">{{elements[idx].create_time}}</text>
 	</view>
 	<!-- <view class="cu-form-group">
 		<view class="title">订单状态</view>

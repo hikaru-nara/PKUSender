@@ -373,20 +373,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // var that = this
-    
-
-    console.log('onshow')
     wx.request({
-      url: 'http://47.97.40.237:8000/pkusender/order_wait/?index=1&num=15',
+      url: 'http://47.97.40.237:8000/pkusender/order_wait/?index=1&num=100',
       method: 'GET',
       success: (res)=>{
         var ticketlist = JSON.parse(res.data)
-        wx.setStorage({
-          key: 'Untaken-Order-List', 
-          data:ticketlist
-        })
-        console.log(ticketlist)
+        
+        // console.log(ticketlist)
         // var date = utils.DateUtils.parse('2016-06-07 下午 11:00:00', 'yyyy-mm-dd tt HH:mm:ss')
         // console.log(date.getDate())
         for(var i=0; i<ticketlist.length;i++){
@@ -394,11 +387,11 @@ Page({
           ticketlist[i].format_create_time = date_create
           var date = new Date()
           if(utils.dateEqual(date, date_create)){
-            console.log('It is today.')
+            // console.log('It is today.')
             var short_create_time = date_create.getHours().toString() +':'+ date_create.getMinutes().toString()
           }
           else{
-            console.log('Not today')
+            // console.log('Not today')
             var short_create_time = date_create.getMonth().toString() +'/'+ date_create.getDate().toString()
           }
           ticketlist[i].short_create_time = short_create_time
@@ -418,6 +411,10 @@ Page({
         // console.log(ticketlist)
         this.setData({
           elements: ticketlist
+        })
+        wx.setStorage({
+          key: 'Untaken-Order-List', 
+          data:ticketlist
         })
         // console.log(ticketlist[0])
       }
