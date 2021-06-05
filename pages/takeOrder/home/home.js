@@ -98,11 +98,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('onshow')
     wx.request({
       url: 'http://47.97.40.237:8000/pkusender/order_wait/?index=1&num=15',
       method: 'GET',
       success: (res)=>{
         var ticketlist = JSON.parse(res.data)
+        console.log(ticketlist)
         wx.setStorage({
           key: 'Untaken-Order-List', 
           data:ticketlist
@@ -113,6 +115,7 @@ Page({
         // console.log(ticketlist[0])
       }
     })
+    
   },
 
   /**

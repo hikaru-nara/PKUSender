@@ -63,18 +63,25 @@ Page({
   takeOrderBtnTap(e){
     console.log('64')
     var idx = this.data.idx
+    console.log(this.data.elements)
     var order = this.data.elements[idx] // order in json format
-    order.type = 10 //更新helperid
+    var app = getApp()
+    order.type = '10' //更新helperid
     console.log('68')
-    order.helper_id = app.globalData.userInfo.nickName
-    console.log('68')
+    console.log(app.globalData.userInfo)
+    order.helper_id = app.globalData.userInfo.user_id
+    console.log('71')
     wx.request({
-      url: 'http://47.97.40.237:8000/order/',
+      url: 'http://47.97.40.237:8000/pkusender/order/',
       method: 'POST',
-      data: order
+      data: JSON.stringify(order),
+      success: (res)=>{
+        console.log('sucesss')
+      }
     })
-    console.log(order)
+    console.log(JSON.stringify(order))
     this.showModal_time(e)
+
   },
   // 点击下拉显示框
   selectTap(){
