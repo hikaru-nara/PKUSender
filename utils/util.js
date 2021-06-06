@@ -11,6 +11,17 @@ function updateAddressList (that){
   })
 }
 
+// function urlUnicode(user_id){
+//   let ret = user_id;
+//   let index = user_id.indexOf('&');
+//   while(index != -1){
+//     console.log(index)
+//     user_id[index] = '%26';
+//     index = user_id.indexOf('&');
+//   }
+//   return ret;
+// }
+
 function get_post_userInfo(userInfo, post_data,type,sep_op){
   if(type == 0 || type == 20){
     post_data.user_id = userInfo.user_id;
@@ -94,7 +105,8 @@ module.exports = {
   get_post_userInfo : get_post_userInfo,
   parse_address: parse_address,
   get_init_order_data: get_init_order_data,
-  formatTime: formatTime
+  formatTime: formatTime,
+  // urlUnicode: urlUnicode
 }
  
 

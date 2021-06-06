@@ -10,7 +10,9 @@ Page({
       url: 'http://47.97.40.237:8000/pkusender/user/?user_id='+app.globalData.userInfo.user_id+'&type=1',
       method: 'GET',
       success: (res)=>{
-        var ticketlist = JSON.parse(res.data)
+        var ticketlist = JSON.parse(res.data);
+        console.log(res);
+        console.log(app.globalData.userInfo.user_id);
         wx.setStorage({
           key: 'place_orders', 
           data:ticketlist
