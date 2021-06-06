@@ -1,0 +1,17 @@
+<cu-custom bgColor="bg-gradual-blue">
+	<view slot="content">评论</view>
+</cu-custom>
+
+<scroll-view scroll-y class="scrollPage">
+  <form>
+    <view class="cu-form-group margin-top">
+      <textarea maxlength="-1" bindinput="CommentText" placeholder="又快又好！五星好评~"></textarea>
+    </view>
+  </form>
+
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="SubmitComment" > 提交评论 </button>
+  </view>
+</scroll-view>
+
+
