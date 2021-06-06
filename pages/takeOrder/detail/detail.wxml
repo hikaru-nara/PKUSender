@@ -19,7 +19,11 @@
   </view>
 	<view class="cu-form-group">
 		<view class="title">订单类别</view>
-		<text class="text-cut" bindtap="showModal" data-target="order_type">{{elements[idx].order_type}}</text>
+		<view wx:if = "{{elements[idx].order_type == 0}}" class="text-cut">其他</view>
+        <view wx:elif = "{{elements[idx].order_type == 1}}" class="text-cut">取快递</view>
+        <view wx:elif = "{{elements[idx].order_type == 2}}" class="text-cut">去外卖</view>
+        <view wx:elif = "{{elements[idx].order_type == 3}}" class="text-cut">送物品</view>
+		<!-- <text class="text-cut" bindtap="showModal" data-target="order_type">{{elements[idx].order_type}}</text> -->
   </view>
   <view class="cu-form-group">
     <view class="title">起始地址</view>
