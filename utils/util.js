@@ -60,6 +60,7 @@ function get_init_order_data(userInfo, order_info){
   order_data.src_address = order_info.src_address;
   order_data.dest_address = order_info.dest_address;
   order_data.coin_cost = order_info.coin_cost;
+  order_data.order_type = order_info.order_type;
   order_data.description = order_info.description;
   order_data.secret_info = order_info.secret_info;
   order_data.order_status = '0';

@@ -82,11 +82,13 @@ App({
     userInfo: {},
     checkMode: false,
     init_student_ID: 1700012964,
-    init_address: [{
-      strMessage: '北京大学45乙楼504室'
-    }, {
-      strMessage: '北京大学第二教学楼'
-    }],
+    max_order_coin_number: 5,
+    // init_address: [{
+    //   strMessage: '北京大学45乙楼504室'
+    // }, {
+    //   strMessage: '北京大学第二教学楼'
+    // }],
+    init_address: [],
     init_coin_num: 50,
     init_credit: 100,
     init_call_order_list: '',

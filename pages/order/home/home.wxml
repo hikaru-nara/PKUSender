@@ -6,10 +6,10 @@
     <image src="http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r" class="png"  mode="widthFix"></image>
     <image src="/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
-  <form>
+  <form wx:if="{{ifshow}}">
     <view class="cu-form-group margin-top">
       <view class="title">起始地址</view>
-      <input placeholder="订单起始地址" value="{{tmp_value}}" wx:if="{{!src_address_label}}" class="order_input" placeholder-class="order_placeholder" bindinput="set_src_address" ></input>
+      <input placeholder="{{src_address_info}}" value="{{tmp_value}}" wx:if="{{!src_address_label}}" class="order_input" placeholder-class="order_placeholder" bindinput="set_src_address" ></input>
       <input placeholder="请填写订单起始地址" value="{{tmp_value}}" wx:else class="warning_input" placeholder-class="warning_placeholder" bindinput="set_src_address" ></input>
       <text class="cuIcon-locationfill text-blue"></text>
     </view>
@@ -21,13 +21,26 @@
     </view>
     <view class="cu-form-group">
       <view class="title">代币数量</view>
-      <picker bindchange="PickerChange" value="{{index}}" range="{{coinNumPicker}}">
+      <picker bindchange="coinNumberPickerChange" value="{{coinNumberIndex}}" range="{{coinNumPicker}}">
         <view class="picker" wx:if="{{!coin_cost_label}}">
-          {{index?coinNumPicker[index]:'悬赏代币数量'}}
+          {{coinNumberIndex?coinNumPicker[coinNumberIndex]:'悬赏代币数量'}}
         </view>
         <view class="picker" wx:else>
           <view class="warning_picker">
-            {{index?coinNumPicker[index]:'请选择代币数量'}}
+            请选择代币数量
+          </view>
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">订单类型</view>
+      <picker bindchange="orderTypePickerChange" value="{{orderTypeIndex}}" range="{{orderTypePicker}}">
+        <view class="picker" wx:if="{{!order_type_label}}">
+          {{orderTypeIndex?orderTypePicker[orderTypeIndex]:'选择订单类型'}}
+        </view>
+        <view class="picker" wx:else>
+          <view class="warning_picker">
+            请选择订单类型
           </view>
         </view>
       </picker>
@@ -43,7 +56,7 @@
       <textarea maxlength="-1"  placeholder="请填写保护信息" bindinput="set_secret_info" value="{{tmp_value}}" wx:else placeholder-class="warning_placeholder"></textarea>
     </view>
   </form>
-  <view class="padding flex flex-direction">
+  <view class="padding flex flex-direction" wx:if="{{ifshow}}">
     <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="updateOrderInfo"> 提交订单 </button>
     <!-- <button class="cu-btn bg-red margin-tb-sm lg" bindtap="init_parameters"> 放弃填写 </button> -->
   </view>

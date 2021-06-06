@@ -13,10 +13,10 @@
       <text class="text-black text-l">信用分</text>
       <text class="text-green text-xl">{{reputation}}</text>
     </view>
-    <view class="cu-item arrow">
-        <navigator class="content" url="/pages/selfInformation/coinRemain/coinRemain" hover-class="none">
-          <text class="text-black text-l">联系客服</text>
-        </navigator>
-      </view>
+    <!-- <view class="cu-item arrow">
+      <navigator class="content" url="/pages/selfInformation/coinRemain/coinRemain" hover-class="none">
+        <text class="text-black text-l">联系客服</text>
+      </navigator>
+    </view> -->
   </view>
 </scroll-view>

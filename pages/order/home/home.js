@@ -7,28 +7,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    index: null,
+    coinNumberIndex: null,
     coinNumPicker: [],
+    orderTypeIndex: null,
+    orderTypePicker: ['取快递','取外卖','送物品', '其他'],
     tabbar: {},
     src_address: null,
     dest_address: null,
     coin_cost: null,
+    order_type:null,
     description: null,
     secret_info: null,
     src_address_label: false,
     dest_address_label: false,
+    order_type_label: false,
     coin_cost_label: false,
     description_label: false,
     secret_info_label: false,
     tmp_value: '',
+    ifshow: false,
+    src_address_info: '请填写订单信息',
   },
 
-  PickerChange(e) {
+  coinNumberPickerChange(e) {
     // console.log(e);
     this.setData({
-      index: e.detail.value,
+      coinNumberIndex: e.detail.value,
       coin_cost: this.data.coinNumPicker[parseInt(e.detail.value)],
       coin_cost_label: false
+    })
+  },
+
+  orderTypePickerChange(e){
+    this.setData({
+      orderTypeIndex: e.detail.value,
+      order_type:  (parseInt(e.detail.value) + 1)%(this.data.orderTypePicker.length),
+      order_type_label: false
     })
   },
 
@@ -62,13 +76,8 @@ Page({
 
   init_coinNumPicker(){
     let userCoinNum;
-    let tmpIndex = 1, tmpList = []
-    if(app.globalData.userInfo.coin_num){
-      userCoinNum = app.globalData.userInfo.coin_num;
-    }
-    else{
-      userCoinNum = app.globalData.init_coin_num;
-    }
+    let tmpIndex = 1, tmpList = [];
+    userCoinNum = app.globalData.max_order_coin_number;
     for(;tmpIndex<=userCoinNum; ++tmpIndex){
       tmpList.push(tmpIndex);
     }
@@ -79,17 +88,21 @@ Page({
 
   init_parameters(){
     this.setData({
-      index: null,
+      coinNumberIndex: null,
       coinNumPicker: [],
+      orderTypeIndex: null,
+      orderTypePicker: ['取快递','取外卖','送物品', '其他'],
       tabbar: {},
       src_address: null,
       dest_address: null,
       coin_cost: null,
+      order_type: null,
       description: null,
       secret_info: null,
       src_address_label: false,
       dest_address_label: false,
       coin_cost_label: false,
+      order_type_label: false,
       description_label: false,
       secret_info_label: false,
       tmp_value: '',
@@ -103,12 +116,13 @@ Page({
       src_address_label: this.data.src_address == null,
       dest_address_label: this.data.dest_address == null,
       coin_cost_label: this.data.coin_cost == null,
+      order_type_label: this.data.order_type == null,
       description_label: this.data.description == null,
       secret_info_label: this.data.secret_info == null
     })
     if(this.data.src_address == null || this.data.dest_address == null ||
-      this.data.coin_cost == null || this.data.description  == null ||
-      this.data.secret_info == null){
+      this.data.coin_cost == null ||  this.data.order_type == null ||
+      this.data.secret_info == null ||this.data.description  == null){
         return;
     }
     // console.log(this.data)
@@ -136,6 +150,7 @@ Page({
       })
     }
     this.init_parameters()
+    // console.log(this.data.coinNumberIndex)
   },
 
   /**
@@ -162,6 +177,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if(app.globalData.userInfo.user_id){
+      this.setData({
+        ifshow:true
+      })
+    }
+    else{
+      this.setData({
+        ifshow:false
+      })
+    }
   },
 
   /**
