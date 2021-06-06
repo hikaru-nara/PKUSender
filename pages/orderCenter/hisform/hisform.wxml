@@ -4,13 +4,17 @@
 </cu-custom>
 	<form>
 	<view class="cu-form-group margin-top">
+		<view class="title">订单类别</view>
+		<text class="text-cut" maxlength="20">{{Type}}</text>
+	</view>
+	<view class="cu-form-group">
 		<view class="title">求助者</view>
 		<text class="text-cut" bindtap="showModal" data-target="Human1">{{elements[idx].caller_name}}</text>
 	</view>
 	<view class="cu-modal {{modalName=='Human1'?'show':''}}">
   	<view class="cu-dialog">
     	<view class="cu-bar bg-white shadow">
-      	<text>{{elements[idx].caller_name}}</text>
+      	<text>{{element.caller_name}}</text>
       	<view class="action" bindtap="hideModal">
         	<text class="cuIcon-close text-red"></text>
       	</view>

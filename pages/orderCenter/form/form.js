@@ -1,6 +1,8 @@
 const app = getApp();
 Page({
-
+  data:{
+    Type:''
+  },
   onLoad: function (option) {
     // console.log(options);
     const eventChannel = this.getOpenerEventChannel()
@@ -31,8 +33,23 @@ Page({
         else if(order_status == 0){
           State = "未接单"
         }
+        var type = this.data.elements[index].order_type;
+        var Type = this.data.Type;
+        if (type == 0){
+          Type = "其他"
+        }
+        else if(type == 1){
+          Type = "取快递"
+        }
+        else if(type == 2){
+          Type = "取外卖"
+        }
+        else if(type == 3){
+          Type = "送物品"
+        }
         this.setData({
-          State:State
+          State:State,
+          Type:Type
         })
       }
     })

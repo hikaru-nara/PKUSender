@@ -1,4 +1,4 @@
-// pages/takeOrder/home/home.js
+const app = getApp();
 Page({
 
   /**
@@ -6,13 +6,11 @@ Page({
    */
 
   onShow: function () {
-    console.log('onshow')
     wx.request({
-      url: 'http://47.97.40.237:8000/pkusender/user/?user_id=[app.globaldata.userinfo.user_id]&type=1',
+      url: 'http://47.97.40.237:8000/pkusender/user/?user_id='+app.globalData.userInfo.user_id+'&type=1',
       method: 'GET',
       success: (res)=>{
         var ticketlist = JSON.parse(res.data)
-        console.log(ticketlist)
         wx.setStorage({
           key: 'place_orders', 
           data:ticketlist
