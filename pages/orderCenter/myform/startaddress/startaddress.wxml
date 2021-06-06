@@ -4,7 +4,7 @@
 </cu-custom>
     <view class="cu-form-group" wx:for='{{address}}'  wx:for-index="idx" wx:for-item="itemName">
       <view class="text-new">
-        <text class="text-cut" bindtap="showModal" data-target="Start" bindtap="selectAddress">{{address[idx]}}</text>
+        <text class="text-cut" bindtap="showModal" bindtap="selectAddress" data-text='{{address[idx].strMessage}}'>{{address[idx].strMessage}}</text>
 			</view>
 			<text class="cuIcon-locationfill text-blue"></text>
     	<view class="cu-modal {{modalName=='Start'?'show':''}}">

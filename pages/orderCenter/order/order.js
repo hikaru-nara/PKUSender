@@ -1,17 +1,12 @@
-// pages/takeOrder/home/home.js
+const app = getApp();
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   onShow: function () {
-    console.log('onshow')
     wx.request({
-      url: 'http://47.97.40.237:8000/pkusender/user/?user_id=[app.globaldata.userinfo.user_id]&type=2',
+      url: 'http://47.97.40.237:8000/pkusender/user/?user_id='+app.globalData.userInfo.user_id+'&type=2',
       method: 'GET',
       success: (res)=>{
         var ticketlist = JSON.parse(res.data)
-        console.log(ticketlist)
         wx.setStorage({
           key: 'receive_orders', 
           data:ticketlist

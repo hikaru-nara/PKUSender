@@ -1,40 +1,28 @@
 // pages/plugin/commonAddress/commonAddress.js
 const utils = require('../../../../utils/util.js');
+const app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    // 之后这里的addressList初始化从服务器读
-    address:['北京大学45乙楼504室','北京大学45乙楼539室'],
+  data:{
+    address:null
   },
   selectAddress: function (e) {
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     prevPage.setData({
-      Start:e.currentTarget.dataset.msg,
+      ['element.src_address']:e.target.dataset.text,
     })
     // 修改之后记得同步到服务器端
     wx.navigateBack({         //返回上一页  
       delta:1
     });
   },
-  addButtonGoto: function(){
-    wx.navigateTo({
-      url: '/pages/selfInformation/commonAddress/singleAddress/singleAddress?index=-1',
-    });
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var tmpAddressList = this.data.addressList;
-    // console.log("Common Address");
-    wx.setStorage({//存储到本地
-      key:"addressList",
-      data:tmpAddressList
-    });
+    this.setData({
+      address: app.globalData.userInfo.address
+    })
   },
 
   /**
@@ -47,8 +35,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function (options) {
-    utils.updateAddressList(this);
+  onShow: function () {
+
   },
 
   /**
