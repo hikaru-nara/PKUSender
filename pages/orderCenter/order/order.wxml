@@ -15,8 +15,16 @@
         <view wx:elif = "{{item.order_type == 2}}" class="text-grey">去外卖</view>
         <view wx:elif = "{{item.order_type == 3}}" class="text-grey">送物品</view>
         <view class="text-gray text-sm flex">
+          <text class='text-cut'>    
+          </text>
           <text class="text-cut">
-              <text class="cuIcon-infofill text-white  margin-right-xs"></text> <text style="color:var(--grey)">起点：</text>{{item.src_address}} <text style="color:var(--grey)">终点：</text>{{item.dest_address}} 
+              <text class="cuIcon-infofill text-white  margin-right-xs">
+              </text> 
+              <text style="color:var(--grey)">起点：</text>{{item.src_address}} 
+          </text>
+          <text class="cuIcon-infofill text-white  margin-right-xs"></text>
+          <text class="text-cut">
+          <text style="color:var(--grey)">终点：</text>{{item.dest_address}} 
           </text>
         </view>
       </view>
