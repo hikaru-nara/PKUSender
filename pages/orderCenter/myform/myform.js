@@ -1,36 +1,150 @@
+
 const app = getApp();
+const utils = require('../../../utils/util.js');
 Page({
-  data: {
-    
-    "human1": "歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜",
-    "human2": "帕布罗.迭戈.荷瑟.山迪亚哥.弗朗西斯科.德.保拉.居安.尼波莫切诺.克瑞斯皮尼亚诺.德.罗斯.瑞米迪欧斯.西波瑞亚诺.德.拉.山迪西玛.特立尼达.玛利亚.帕里西奥.克里托.瑞兹.布拉斯科.毕加索",
-    "start": "北京大学45乙504",
-    "target": "北京大学45乙539",
-    "self": "取件码 123456789，大件",
-    "place": "北京大学二教",
-    "message": "轻拿轻放，是玻璃制品",
-    "state": "北大校内闪送王非你莫属，又快又好，666！！打call",
-    "money":3,
+  data:{
+    element:{},
     show:false,//控制下拉列表的显示隐藏，false隐藏、true显示
     selectData:['1','2','3','4','5'],//下拉列表的数据
-    "index":2,
+    Index: '0',
+    Idx: 0,
+    State: '',
+    Type:''
   },
     // 点击下拉显示框
     selectTap(){
-    this.setData({
-     show: !this.data.show
-    });
+      this.setData({
+        show: !this.data.show
+      });
     },
+
     // 点击下拉列表
     optionTap(e){
-    let Index=e.currentTarget.dataset.index;//获取点击的下拉列表的下标
-    this.setData({
-     index:Index,
-     show:!this.data.show
-    });
+      let index = e.currentTarget.dataset.index;//获取点击的下拉列表的下标
+      var coin = index + 1;
+      var coin_cost = coin.toString();
+      this.setData({
+        Index:index,
+        show:!this.data.show,
+        ['element.coin_cost']:coin_cost
+      });
     },
+
     onLoad: function (options) {
+      // console.log("Common Address");
+      const eventChannel = this.getOpenerEventChannel()
+      var index = 0;
+      eventChannel.on('acceptDataFromOpenerPage', function(data) {
+        index = data.index;
+      })
+      wx.getStorage({
+        key: 'place_orders',
+        success: (res)=>{
+          this.setData({
+            elements: res.data
+          })
+          var element = this.data.elements[index];
+          var type = element.order_type;
+          var choiceidx = element.coin_cost;
+          choiceidx = choiceidx - 1;
+          var State = this.data.State;
+          var Type = this.data.Type;
+          var status = element.order_status;
+          if (status == 1){
+            State = "已接单"
+          }
+          else if(status == 2){
+            State = "已完成"
+          }
+          else if(status == 0){
+            State = "未接单"
+          }
+          if (type == 0){
+            Type = "其他"
+          }
+          else if(type == 1){
+            Type = "取快递"
+          }
+          else if(type == 2){
+            Type = "取外卖"
+          }
+          else if(type == 3){
+            Type = "送物品"
+          }
+          //转换成字符串发给后端
+          var order_status = element.order_status.toString();
+          var coin_cost = element.coin_cost.toString();
+          var order_type = element.order_type.toString();
+          this.setData({
+            element:element,
+            idx:index,
+            Idx:index,
+            Index:choiceidx,
+            State:State,
+            Type:Type,
+            ['element.order_type']: order_type,
+            ['element.order_status']: order_status,
+            ['element.coin_cost']: coin_cost
+          })
+        }
+      })
     },
+
+  showselfmessage(e) {
+    this.setData({
+      ['element.secret_info']: e.detail.value
+    })
+  },
+  
+  showdescription(e) {
+    this.setData({
+      ['element.description']: e.detail.value
+    })
+  },
+
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+  PickerChange(e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  gotoStartPage:function(e) {
+    wx.navigateTo({
+      url: 'startaddress/startaddress',
+    })
+  },
+  gotoTargetPage:function(e) {
+    wx.navigateTo({
+      url: 'targetaddress/targetaddress',
+    })
+  },
+
+  CompleteOrder: function () {
+    var element = this.data.element;
+    element.type = "13";
+    element.order_status = "2";
+    element.complete_time = utils.formatTime(new Date());
+    wx.request({
+      url: 'http://47.97.40.237:8000/pkusender/order/',
+      method: 'POST',
+      data: JSON.stringify(element),
+      success: (res)=>{
+        console.log('order success send');
+      }
+    })
+    var Idx = this.data.idx;
+    wx.navigateTo({
+      url: 'Comment/Comment?index='+Idx,
+      success: function(res){
+        console.log("success");
+      }
+    })
+  },
+
   showModal(e) {
     this.setData({
       modalName: e.currentTarget.dataset.target
@@ -41,96 +155,37 @@ Page({
       modalName: null
     })
   },
-  PickerChange(e) {
-    console.log(e);
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  MultiChange(e) {
-    this.setData({
-      multiIndex: e.detail.value
-    })
-  },
-  TimeChange(e) {
-    this.setData({
-      time: e.detail.value
-    })
-  },
-  DateChange(e) {
-    this.setData({
-      date: e.detail.value
-    })
-  },
-  RegionChange: function(e) {
-    this.setData({
-      region: e.detail.value
-    })
-  },
-  textareaAInput(e) {
-    this.setData({
-      textareaAValue: e.detail.value
-    })
-  },
-  textareaBInput(e) {
-    this.setData({
-      textareaBValue: e.detail.value
-    })
-  },
-  InputFocus(e) {
-    this.setData({
-      InputBottom: e.detail.height,
-      inputValue: e.detail.value
-    })
-  },
-  bindKeyInput: function (e) {
-    this.setData({
-      inputValue: e.detail.value
-    })
-  },
-  InputBlur(e) {
-    this.setData({
-      InputBottom: 0
-    })
-  },
-  methods: {
-    optionTap(e) {
-      let dataset = e.target.dataset
-      this.setData({
-        current: dataset,
-        isShow: false
-      });
-
-      // 调用父组件方法，并传参
-      this.triggerEvent("change", { ...dataset })
-    },
-    openClose() {
-      this.setData({
-        isShow: !this.data.isShow
-      })
-    },
-
-    // 此方法供父组件调用
-    close() {
-      this.setData({
-        isShow: false
-      })
-    }
-  },
-  lifetimes: {
-    attached() {
-      // 属性名称转换, 如果不是 { id: '', name:'' } 格式，则转为 { id: '', name:'' } 格式
-      let result = []
-      if (this.data.key !== 'id' || this.data.text !== 'name') {       
-        for (let item of this.data.options) {
-          let { [this.data.key]: id, [this.data.text]: name } = item
-          result.push({ id, name })
-        }
+  
+  ModifyOrder: function () {
+    var element = this.data.element;
+    element.type = "20";
+    console.log(JSON.stringify(element));
+    wx.request({
+      url: 'http://47.97.40.237:8000/pkusender/order/',
+      method: 'POST',
+      data: JSON.stringify(element),
+      success: (res)=>{
+        console.log('order success send');
       }
-      this.setData({
-        current: Object.assign({}, this.data.defaultOption),
-        result: result
-      })
-    }
-  }
+    })
+    wx.navigateBack({         //返回上一页  
+      delta:1
+    });
+  },
+  DeleteOrder: function () {
+    var element = this.data.element;
+    element.type = "19";
+    wx.request({
+      url: 'http://47.97.40.237:8000/pkusender/order/',
+      method: 'POST',
+      data: JSON.stringify(element),
+      success: (res)=>{
+        console.log('order success send');
+      }
+    })
+    wx.navigateBack({         //返回上一页  
+      delta:1
+    });
+  },
+
 })

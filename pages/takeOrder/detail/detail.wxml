@@ -1,26 +1,116 @@
-<!--pages/takeOrder/detail/detail.wxml-->
-<!-- <text>pages/takeOrder/detail/detail.wxml</text> -->
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}"><view slot="backText">返回</view><view slot="content">订单详细信息</view></cu-custom>
-<image src='{{elements[idx].avatar}}' mode='widthFix' class='png' style='width:200rpx'></image>
-<view> 
-  {{elements[idx].title}}
-</view>
-<view>
-  请求者：{{elements[idx].name}},
-</view>
-<view>
-  代币奖励：{{elements[idx].reward}},
-</view>
-<view>
-  起始地址：{{elements[idx].from}},
-</view>
-<view>
-  目的地址：{{elements[idx].to}},
-</view>
-<view>
-  发布时间：{{elements[idx].time}},
-</view>
-<view>
-  订单描述：{{elements[idx].detail}}
-</view>
-<button></button>
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">订单</view>
+</cu-custom>
+	<form>
+	<view class="cu-form-group margin-top">
+		<view class="title">求助者</view>
+		<text class="text-cut" bindtap="showModal" data-target="Human1">{{elements[idx].caller_id}}</text>
+  </view>
+  <view class="cu-modal {{modalName=='Human1'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].caller_id}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+  </view>
+	<view class="cu-form-group">
+		<view class="title">订单类别</view>
+		<view wx:if = "{{elements[idx].order_type == 0}}" class="text-cut">其他</view>
+        <view wx:elif = "{{elements[idx].order_type == 1}}" class="text-cut">取快递</view>
+        <view wx:elif = "{{elements[idx].order_type == 2}}" class="text-cut">去外卖</view>
+        <view wx:elif = "{{elements[idx].order_type == 3}}" class="text-cut">送物品</view>
+		<!-- <text class="text-cut" bindtap="showModal" data-target="order_type">{{elements[idx].order_type}}</text> -->
+  </view>
+  <view class="cu-form-group">
+    <view class="title">起始地址</view>
+    <text class="text-cut" bindtap="showModal" maxlength="20" data-target='src_addr'>{{elements[idx].src_address}}</text>
+    <text class="cuIcon-locationfill text-orange"></text>
+	</view>
+	<view class="cu-form-group">
+    <view class="title">目的地址</view>
+      <text class="text-cut" bindtap="showModal" maxlength="20" data-target='tgt_addr'>{{elements[idx].dest_address}}</text>
+    <text class="cuIcon-locationfill text-orange"></text>
+	</view>
+	<view class="cu-form-group" >
+		<view class="title">订单描述</view>
+			<text class="text-cut" bindtap="showModal" maxlength="20" data-target="description">{{elements[idx].description}}</text>
+	</view>
+	<view class="cu-form-group" >
+		<view class="title">代币数额</view>
+			<text class="text-cut" maxlength="20">{{elements[idx].coin_cost}}</text>
+	</view>
+	
+  <view class="cu-modal {{modalName=='description'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].description}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+
+  <view class="cu-modal {{modalName=='src_addr'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].src_address}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+
+  <view class="cu-modal {{modalName=='tgt_addr'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].dest_address}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view>
+	
+	<view class="cu-form-group" >
+		<view class="title">下单时间</view>
+			<text class="text-cut" maxlength="20">{{elements[idx].create_time}}</text>
+	</view>
+	<!-- <view class="cu-form-group">
+		<view class="title">订单状态</view>
+		<view class="text-new">
+			<text class="text-cut" bindtap="showModal" data-target="State">{{elements[idx].state}}</text>
+		</view>
+	</view>
+	<view class="cu-modal {{modalName=='State'?'show':''}}">
+  	<view class="cu-dialog">
+    	<view class="cu-bar bg-white shadow">
+      	<text>{{elements[idx].state}}</text>
+      	<view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view>
+    	</view>
+  	</view>
+	</view> -->
+</form>
+<button type='primary' bindtap='takeOrderBtnTap' data-target='success' data-navigate='/pages/orderCenter/home/home'>
+  确认接单 
+</button>
+
+  <view class="cu-modal {{modalName=='success'?'show':''}}">
+    
+  	<view class="cu-dialog">
+      <icon type='success' size='100'></icon>
+    	<view style='text-align:center'>
+      	<text>接单成功，请前往订单中心查看订单信息，正在跳转</text>
+      	<!-- <view class="action" bindtap="hideModal">
+        	<text class="cuIcon-close text-red"></text>
+      	</view> -->
+    	</view>
+  	</view>
+	</view>

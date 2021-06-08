@@ -46,7 +46,8 @@ Page({
         // console.log(res.userInfo)
         let tmpUserInfo = {}
         // tmpUserInfo.student_id = app.globalData.initStudentID;
-        tmpUserInfo.user_id = (res.userInfo.nickName).replace('&','%26');
+        tmpUserInfo.user_id = res.userInfo.nickName.replace('&',' and ')     
+        tmpUserInfo.user_id = res.userInfo.nickName
         tmpUserInfo.user_name = res.userInfo.nickName;
         tmpUserInfo.gender = res.userInfo.gender;
         tmpUserInfo.address = app.globalData.init_address;
@@ -67,13 +68,12 @@ Page({
             url: app.globalData.serverUrl+'/user/?user_id='+tmpUserInfo.user_id+'&type=0',
             method: 'GET',
             success: (res)=>{
+              // console.log(res, tmpUserInfo.user_id)
               if (res.data != 'user_id error!'){
-                // console.log(res.data)
                 this.setData({
                   userInfo: JSON.parse(res.data)[0]
                 })
-                this.data.userInfo.user_id = this.data.userInfo.user_id.replace('&','and');
-                this.data.userInfo.address = utils.parse_address(this.data.userInfo.address, app.globalData.sep_op);
+                this.data.userInfo.user_id = this.data.userInfo.user_id.replace('&',' and ');
                 app.globalData.userInfo = this.data.userInfo;
                 console.log('selfInfomation home get succeed')
               }

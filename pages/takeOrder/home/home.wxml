@@ -1,31 +1,45 @@
 <!--pages/takeOrder/home/home.wxml-->
-<!-- <scroll-view scroll-y class="scrollPage">
-  <image src='/images/BasicsBg.png' mode='widthFix' class='png' style='width:100%;height:486rpx'></image> -->
 
   <cu-custom bgColor="bg-gradual-blue"><view slot="content">订单列表</view></cu-custom>
 <view class="cu-list menu-avatar">
-    <view bindtap="navToDetail" data-id="{{index}}" class="cu-item" wx:for="{{elements}}" wx:key="index">
+    <block wx:for="{{elements}}" wx:key="index">
+      <view bindtap="navToDetail" data-id="{{index}}" class="cu-item">
       <!-- <view class="cu-avatar round lg" style="background-image:url(/images/LOGO.png);" wx:if="{{item.avatar}}"></view> -->
-      <!-- 可以把数据库的图片缓存到本地吗 -->
       <view class="cu-avatar round lg" style="background-image:url(http://r.photo.store.qq.com/psc?/V504IPcD1WcoNe0spF2b2kYfri332ITg/45NBuzDIW489QBoVep5mcTb9xafGbZp9m0rXqkypbAKKtANWaZ3.OPexiCUoymujofrs83YqxIq6BCr89DmTOFeDyv*JHUUKudl00cm1tis!/r);"></view>
       <view class="content">
         <!-- 订单类别/概述 -->
-        <view class="text-grey">{{item.title}}</view>
+        <!-- <view class="text-grey">{{item.title}}</view> -->
+        <!-- <view class="text-grey"> -->
+        <!-- {{item.order_type}}  -->
+        <view wx:if = "{{item.order_type == 0}}" class="text-grey">其他</view>
+        <view wx:elif = "{{item.order_type == 1}}" class="text-grey">取快递</view>
+        <view wx:elif = "{{item.order_type == 2}}" class="text-grey">取外卖</view>
+        <view wx:elif = "{{item.order_type == 3}}" class="text-grey">送物品</view>
+        <!-- </view> -->
         <view class="text-gray text-sm flex">
+          <text class='text-cut'>
+            
+          </text>
           <text class="text-cut">
-              <text class="cuIcon-infofill text-white  margin-right-xs"></text> <text style="color:var(--grey)">起点：</text>{{item.from}} <text style="color:var(--grey)">终点：</text>{{item.to}} 
+              <text class="cuIcon-infofill text-white  margin-right-xs">
+              </text> 
+              <text style="color:var(--grey)">起点：</text>{{item.src_address}} 
+          </text>
+          <text class="cuIcon-infofill text-white  margin-right-xs"></text>
+          <text class="text-cut">
+          <text style="color:var(--grey)">终点：</text>{{item.dest_address}} 
           </text>
         </view>
       </view>
       <view class="action">
         <!-- 发布时间 -->
-        <view class="text-grey text-xs">{{item.time}}</view>
-        <!-- 赏金 TODO: color -->
-        <view class="cu-tag round bg-orange sm">{{item.reward}}</view>
+        <view class="text-grey text-xs">{{item.short_create_time}}</view>
+        <view class="cu-tag round bg-orange sm">{{item.coin_cost}}</view>
       </view>
     </view>
+  </block>
 </view>
-<!-- </view> -->
-  <!-- </view> -->
   <view class='cu-tabbar-height'></view>
 <!-- </scroll-view> -->
+ 
+    

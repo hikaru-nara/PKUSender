@@ -5,6 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
+    "human1": "歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜歪比巴卜",
+    "human2": "帕布罗.迭戈.荷瑟.山迪亚哥.弗朗西斯科.德.保拉.居安.尼波莫切诺.克瑞斯皮尼亚诺.德.罗斯.瑞米迪欧斯.西波瑞亚诺.德.拉.山迪西玛.特立尼达.玛利亚.帕里西奥.克里托.瑞兹.布拉斯科.毕加索",
+    "start": "北京大学45乙504",
+    "target": "北京大学45乙539",
+    "self": "取件码 123456789，大件",
+    "place": "北京大学二教",
+    "message": "轻拿轻放，是玻璃制品",
+    "state": "北大校内闪送王非你莫属，又快又好，666！！打call",
+    "money":3,
+    show:false,//控制下拉列表的显示隐藏，false隐藏、true显示
+    selectData:['1','2','3','4','5'],//下拉列表的数据
+    "index":2,
     elements:[
       {
         "title": "取快递",
@@ -17,7 +29,8 @@ Page({
         "from": "34楼后快递点",
         "to": "39楼楼下",
         "object": "快递",
-        "avatar": "/images/LOGO.png"
+        "avatar": "/images/LOGO.png",
+        "state": "已下单"
       },
       {
         "title": "食堂外带",
@@ -30,11 +43,71 @@ Page({
         "from": "34楼后快递点",
         "to": "45乙楼楼下",
         "object": "鸡腿饭",
-        "avatar": "/images/LOGO.png"
+        "avatar": "/images/LOGO.png",
+        "state": "已下单"
       }
 
     ],
     idx: -1
+  },
+
+  showModal_time(e){
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    });
+    setTimeout(
+      ()=>{wx.switchTab({
+        url: e.currentTarget.dataset.navigate,
+      })}, 2000
+    )
+  },
+  takeOrderBtnTap(e){
+    // console.log('64')
+    var idx = this.data.idx
+    // console.log(this.data.elements)
+    var order = this.data.elements[idx] // order in json format
+    
+    var app = getApp()
+    order.type = '10' //更新helperid
+    // console.log('68')
+    // console.log(app.globalData.userInfo)
+    order.helper_id = app.globalData.userInfo.user_id
+    // console.log('71')
+    wx.request({
+      url: 'http://47.97.40.237:8000/pkusender/order/',
+      method: 'POST',
+      data: JSON.stringify(order),
+      success: (res)=>{
+        console.log('sucesss')
+      }
+    })
+    // console.log(JSON.stringify(order))
+    this.showModal_time(e)
+
+  },
+  // 点击下拉显示框
+  selectTap(){
+    this.setData({
+     show: !this.data.show
+    });
+    },
+    // 点击下拉列表
+    optionTap(e){
+      let Index=e.currentTarget.dataset.index;//获取点击的下拉列表的下标
+      this.setData({
+       index:Index,
+       show:!this.data.show
+      });
+      },
+  showModal(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
   },
 
   /**
@@ -52,6 +125,28 @@ Page({
     })
     this.setData({
       idx:index
+    })
+    // try {
+    //   console.log('119')
+    //   var order_list = wx.getStorageSync('Untaken-Order-List')
+    //   console.log(order_list)
+    //   if (order_list) {
+    //     this.setData({
+    //       elements:order_list
+    //     })
+    //     // Do something with return value
+    //   }
+    // } catch (e) {
+    //   console.log('Error when loading the order')
+      // Do something when catch error
+    // }
+    wx.getStorage({
+      key:'Untaken-Order-List',
+      success: (res)=>{
+        this.setData({
+          elements: res.data
+        })
+      }
     })
   },
 
