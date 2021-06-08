@@ -374,7 +374,7 @@ Page({
    */
   onShow: function () {
     wx.request({
-      url: 'http://47.97.40.237:8000/pkusender/order_wait/?index=1&num=100',
+      url: 'http://47.97.40.237:8000/pkusender/order_wait/?index=1&num=20',
       method: 'GET',
       success: (res)=>{
         var ticketlist = JSON.parse(res.data)
@@ -384,16 +384,22 @@ Page({
         // console.log(date.getDate())
         for(var i=0; i<ticketlist.length;i++){
           var date_create = utils.DateUtils.parse(ticketlist[i].create_time, 'yyyy/M/d tth:mm:ss')
+          // console.log(ticketlist[i].create_time)
+          // console.log(date_create)
           ticketlist[i].format_create_time = date_create
           var date = new Date()
           if(utils.dateEqual(date, date_create)){
             // console.log('It is today.')
-            var short_create_time = date_create.getHours().toString() +':'+ date_create.getMinutes().toString()
+            var short_create_time = utils.DateUtils.format(date_create, 'tth:mm')
+            // var short_create_time = date_create.getHours().toString() +':'+ date_create.getMinutes().toString()
           }
           else{
             // console.log('Not today')
-            var short_create_time = date_create.getMonth().toString() +'/'+ date_create.getDate().toString()
+            var short_create_time = utils.DateUtils.format(date_create, 'yyyy/M/d')
+            // var short_create_time = date_create.getMonth().toString() +'/'+ date_create.getDate().toString()
+            
           }
+          // console.log(short_create_time)
           ticketlist[i].short_create_time = short_create_time
           // console.log(date)
         }

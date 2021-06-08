@@ -13,7 +13,7 @@
         <!-- {{item.order_type}}  -->
         <view wx:if = "{{item.order_type == 0}}" class="text-grey">其他</view>
         <view wx:elif = "{{item.order_type == 1}}" class="text-grey">取快递</view>
-        <view wx:elif = "{{item.order_type == 2}}" class="text-grey">去外卖</view>
+        <view wx:elif = "{{item.order_type == 2}}" class="text-grey">取外卖</view>
         <view wx:elif = "{{item.order_type == 3}}" class="text-grey">送物品</view>
         <!-- </view> -->
         <view class="text-gray text-sm flex">

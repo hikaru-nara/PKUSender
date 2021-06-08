@@ -62,17 +62,17 @@ Page({
     )
   },
   takeOrderBtnTap(e){
-    console.log('64')
+    // console.log('64')
     var idx = this.data.idx
-    console.log(this.data.elements)
+    // console.log(this.data.elements)
     var order = this.data.elements[idx] // order in json format
     
     var app = getApp()
     order.type = '10' //更新helperid
-    console.log('68')
-    console.log(app.globalData.userInfo)
+    // console.log('68')
+    // console.log(app.globalData.userInfo)
     order.helper_id = app.globalData.userInfo.user_id
-    console.log('71')
+    // console.log('71')
     wx.request({
       url: 'http://47.97.40.237:8000/pkusender/order/',
       method: 'POST',
@@ -81,7 +81,7 @@ Page({
         console.log('sucesss')
       }
     })
-    console.log(JSON.stringify(order))
+    // console.log(JSON.stringify(order))
     this.showModal_time(e)
 
   },
