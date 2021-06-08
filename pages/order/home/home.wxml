@@ -22,12 +22,17 @@
     <view class="cu-form-group">
       <view class="title">代币数量</view>
       <picker bindchange="coinNumberPickerChange" value="{{coinNumberIndex}}" range="{{coinNumPicker}}">
-        <view class="picker" wx:if="{{!coin_cost_label}}">
+        <view class="picker" wx:if="{{!coin_overflow_label && !coin_cost_label}}">
           {{coinNumberIndex?coinNumPicker[coinNumberIndex]:'悬赏代币数量'}}
         </view>
-        <view class="picker" wx:else>
+        <view class="picker" wx:if="{{!coin_overflow_label && coin_cost_label}}">
           <view class="warning_picker">
             请选择代币数量
+          </view>
+        </view>
+        <view class="picker" wx:if="{{coin_overflow_label}}">
+          <view class="warning_picker">
+            代币数量不可以超过{{total_coin_number}}
           </view>
         </view>
       </picker>
@@ -60,7 +65,14 @@
     <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="updateOrderInfo"> 提交订单 </button>
     <!-- <button class="cu-btn bg-red margin-tb-sm lg" bindtap="init_parameters"> 放弃填写 </button> -->
   </view>
-  
+  <view class="cu-modal {{window_label?'show':''}}">
+    <view class="cu-dialog">
+      <icon type="success" size="100"></icon>
+      <view style="text-align:center">
+        <text> 下单成功，请前往订单中心查看，正在跳转 </text>
+      </view>
+    </view>
+  </view>
     
   
 </scroll-view>
