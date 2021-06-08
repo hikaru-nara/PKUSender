@@ -1,1 +1,4 @@
 /* pages/takeOrder/home/home.wxss */
+.text-cut {
+	flex: 1;
+}
