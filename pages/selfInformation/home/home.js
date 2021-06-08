@@ -72,7 +72,7 @@ Page({
                 this.setData({
                   userInfo: JSON.parse(res.data)[0]
                 })
-                this.data.userInfo.user_id = this.data.userInfo.user_id.replace('&','%26');
+                this.data.userInfo.user_id = this.data.userInfo.user_id.replace('&','and');
                 this.data.userInfo.address = utils.parse_address(this.data.userInfo.address, app.globalData.sep_op);
                 app.globalData.userInfo = this.data.userInfo;
                 console.log('selfInfomation home get succeed')
