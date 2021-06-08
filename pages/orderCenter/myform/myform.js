@@ -4,6 +4,8 @@ const utils = require('../../../utils/util.js');
 Page({
   data:{
     element:{},
+    PersonalInfo:{},
+    Delete:{},
     show:false,//控制下拉列表的显示隐藏，false隐藏、true显示
     selectData:['1','2','3','4','5'],//下拉列表的数据
     Index: '0',
@@ -183,6 +185,36 @@ Page({
         console.log('order success send');
       }
     })
+    wx.request({
+      url: 'http://47.97.40.237:8000/pkusender/user/?user_id='+app.globalData.userInfo.user_id+'&type=0',
+      method: 'GET',
+      success: (res)=>{
+        var ticketlist = JSON.parse(res.data);
+        console.log(ticketlist);
+        this.setData({
+          PersonalInfo: ticketlist
+        })
+        var userId = this.data.PersonalInfo[0].user_id;
+        var coin = this.data.PersonalInfo[0].coin_num;
+        var coin_cost = parseInt(element.coin_cost);
+        var Delete = this.data.Delete;
+        coin = coin + coin_cost;
+        console.log(coin);
+        Delete.type = "13";
+        Delete.user_id = userId.toString();
+        Delete.coin_num = coin.toString();
+        console.log(this.data.Delete);
+        wx.request({
+          url: 'http://47.97.40.237:8000/pkusender/user/',
+          method: 'POST',
+          data: JSON.stringify(Delete),
+          success: (res)=>{
+            console.log('order success send');
+          }
+        })
+      }
+    })
+
     wx.navigateBack({         //返回上一页  
       delta:1
     });

@@ -23,3 +23,6 @@
   content: "\e6db";
 }
 
+.text-cut {
+	flex: 1;
+}
