@@ -1,0 +1,23 @@
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">常用地址</view>
+</cu-custom>
+    <view class="cu-form-group" wx:for='{{address}}'  wx:for-index="idx" wx:for-item="itemName">
+      <view class="text-new">
+        <text class="text-cut" bindtap="showModal" bindtap="selectAddress" data-text='{{address[idx].strMessage}}'>{{address[idx].strMessage}}</text>
+			</view>
+			<text class="cuIcon-locationfill text-blue"></text>
+    	<view class="cu-modal {{modalName=='Start'?'show':''}}">
+      	<view class="cu-dialog">
+        	<view class="cu-bar bg-white shadow">
+          	<text>{{address[idx]}}</text>
+      	    <view class="action" bindtap="hideModal">
+        	    <text class="cuIcon-close text-red"></text>
+          	</view>
+    	    </view>
+  	    </view>
+	    </view>
+  </view>
+
+
+  
