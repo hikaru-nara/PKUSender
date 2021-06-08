@@ -46,7 +46,7 @@ Page({
         // console.log(res.userInfo)
         let tmpUserInfo = {}
         // tmpUserInfo.student_id = app.globalData.initStudentID;
-        tmpUserInfo.user_id = res.userInfo.nickName;
+        tmpUserInfo.user_id = (res.userInfo.nickName).replace('&','%26');
         tmpUserInfo.user_name = res.userInfo.nickName;
         tmpUserInfo.gender = res.userInfo.gender;
         tmpUserInfo.address = app.globalData.init_address;
@@ -72,6 +72,7 @@ Page({
                 this.setData({
                   userInfo: JSON.parse(res.data)[0]
                 })
+                this.data.userInfo.user_id = this.data.userInfo.user_id.replace('&','%26');
                 this.data.userInfo.address = utils.parse_address(this.data.userInfo.address, app.globalData.sep_op);
                 app.globalData.userInfo = this.data.userInfo;
                 console.log('selfInfomation home get succeed')

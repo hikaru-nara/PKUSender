@@ -24,9 +24,12 @@ Page({
     coin_cost_label: false,
     description_label: false,
     secret_info_label: false,
+    coin_overflow_label: false,
+    total_coin_number : -1,
     tmp_value: '',
     ifshow: false,
     src_address_info: '请填写订单信息',
+    window_label: false,
   },
 
   coinNumberPickerChange(e) {
@@ -34,7 +37,10 @@ Page({
     this.setData({
       coinNumberIndex: e.detail.value,
       coin_cost: this.data.coinNumPicker[parseInt(e.detail.value)],
-      coin_cost_label: false
+      coin_cost_label: false,
+    })
+    this.setData({
+      coin_overflow_label: this.data.coin_cost > app.globalData.coin_num
     })
   },
 
@@ -105,7 +111,10 @@ Page({
       order_type_label: false,
       description_label: false,
       secret_info_label: false,
+      coin_overflow_label: false,
+      total_coin_number : -1,
       tmp_value: '',
+      window_label: false,
     })
     this.init_coinNumPicker()
   },
@@ -118,14 +127,31 @@ Page({
       coin_cost_label: this.data.coin_cost == null,
       order_type_label: this.data.order_type == null,
       description_label: this.data.description == null,
-      secret_info_label: this.data.secret_info == null
+      secret_info_label: this.data.secret_info == null,
+      coin_overflow_label: this.data.coin_cost > app.globalData.userInfo.coin_num
     })
     if(this.data.src_address == null || this.data.dest_address == null ||
       this.data.coin_cost == null ||  this.data.order_type == null ||
-      this.data.secret_info == null ||this.data.description  == null){
+      this.data.secret_info == null ||this.data.description  == null ||
+      this.data.coin_overflow_label == true){
+        this.setData({
+          total_coin_number : app.globalData.userInfo.coin_num
+        })
         return;
     }
     // console.log(this.data)
+    let user_post_data = {};
+    app.globalData.userInfo.coin_num = app.globalData.userInfo.coin_num - this.data.coin_cost;
+    utils.get_post_userInfo(app.globalData.userInfo, user_post_data, 13, null);
+    wx.request({
+      url: app.globalData.serverUrl+'/user/',
+      method: 'POST',
+      data: user_post_data,
+      success: (res) =>{
+        console.log(res)
+        console.log('user coin num update succeed')
+      }
+    })
     let order_post_data = utils.get_init_order_data(app.globalData.userInfo, this.data)
     if(!app.globalData.checkMode){
       wx.request({
@@ -135,14 +161,15 @@ Page({
           console.log('order get order_num succeed')
           // console.log(res.data)
           let order_num = parseInt(res.data);
-          order_post_data.order_id = (order_num + 1).toString();
+          order_post_data.order_id = (order_num + 1000).toString();
           // console.log(order_num)
-          console.log(order_post_data)
+          // console.log(order_post_data)
           wx.request({
             url: app.globalData.serverUrl+'/order/',
             method: 'POST',
             data: order_post_data,
             success: (res) =>{
+              console.log(res)
               console.log('order post order succeed')
             }
           })
@@ -150,6 +177,20 @@ Page({
       })
     }
     this.init_parameters()
+    this.setData({
+      window_label: true,
+      ifshow: false
+    })
+    setTimeout(
+      ()=>{
+      wx.switchTab({
+        url: '/pages/orderCenter/home/home',
+      }),
+      this.setData({
+        window_label: false
+      })
+    }, 2000
+    )
     // console.log(this.data.coinNumberIndex)
   },
 
@@ -179,12 +220,14 @@ Page({
   onShow: function () {
     if(app.globalData.userInfo.user_id){
       this.setData({
-        ifshow:true
+        ifshow:true,
+        // window_label:false
       })
     }
     else{
       this.setData({
-        ifshow:false
+        ifshow:false,
+        // window_label:false
       })
     }
   },

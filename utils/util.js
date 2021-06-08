@@ -29,7 +29,11 @@ function get_post_userInfo(userInfo, post_data,type,sep_op){
     post_data.address = code_adreess(userInfo.address,sep_op);
     post_data.type = type.toString();
   }
-  
+  else if(type == 13){
+    post_data.user_id = userInfo.user_id;
+    post_data.coin_num = userInfo.coin_num;
+    post_data.type = type.toString();
+  }
 }
 
 function parse_address(address_string, sep_op){
