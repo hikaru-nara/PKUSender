@@ -71,8 +71,9 @@ Page({
               if (res.data != 'user_id error!'){
                 this.setData({
                   userInfo: JSON.parse(res.data)[0]
+                })
                 // this.data.userInfo.user_id = this.data.userInfo.user_id.replace('&',' and ');
-                this.data.userInfo.address = utils.parse_address(this.data.userInfo.address, app.globalData.sep_op);
+                this.data.userInfo.address = utils.parse_address(this.data.userInfo.address, app.globalData.sep_op)
                 app.globalData.userInfo = this.data.userInfo;
                 console.log('selfInfomation home get succeed')
               }
